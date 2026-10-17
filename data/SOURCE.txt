@@ -1,0 +1,2 @@
+968598afc43470287fc82f221431f9ef50a77b2f
+https://github.com/astral-sh/uv.git
