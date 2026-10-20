@@ -1,19 +1,26 @@
 from psycopg.conninfo import make_conninfo
-from pydantic import SecretStr
+from pydantic import Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
+    # Base de données
     postgres_user: str
     postgres_password: SecretStr
     postgres_db: str
-    postgres_host: str = "localhost"  # surchargé par "db" dans docker-compose
-    postgres_port: int = 5432
+    postgres_host: str 
+    postgres_port: int = Field(gt=0, lt=65536)
 
-    embedding_model: str = "BAAI/bge-small-en-v1.5"
-    embedding_dim: int = 384
+    # Embeddings 
+    embedding_model: str
+    embedding_dim: int = Field(gt=0)
+
+    # Modèle de langage 
+    llm_base_url: str
+    llm_api_key: SecretStr 
+    llm_model: str 
 
     @property
     def database_dsn(self) -> str:
@@ -24,6 +31,5 @@ class Settings(BaseSettings):
             user=self.postgres_user,
             password=self.postgres_password.get_secret_value(),
         )
-
 
 settings = Settings()

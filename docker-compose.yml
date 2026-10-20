@@ -18,6 +18,7 @@ services:
     env_file: .env
     environment:
       POSTGRES_HOST: db
+      LLM_BASE_URL: http://host.docker.internal:11434/v1
     ports:
       - "8000:8000"
     depends_on:
