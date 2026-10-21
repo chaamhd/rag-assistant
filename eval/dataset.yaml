@@ -1,0 +1,309 @@
+# Jeu d'évaluation. Une entrée par question ; voir scripts/dataset.py pour le format.
+
+- id: install-python-version
+  category: howto
+  question: How do I install a specific Python version with uv?
+  should_refuse: false
+  expected_sources: [concepts/python-versions.md]
+  expected_terms: ["uv python install"]
+
+- id: pin-python-version
+  category: howto
+  question: How can I pin the Python version of a project?
+  should_refuse: false
+  expected_sources: [concepts/python-versions.md]
+  expected_terms: ["uv python pin", ".python-version"]
+
+- id: create-project
+  category: howto
+  question: How do I create a new project with uv?
+  should_refuse: false
+  expected_sources: [guides/projects.md, concepts/projects/init.md]
+  expected_terms: ["uv init"]
+
+- id: add-dependency
+  category: howto
+  question: How do I add a dependency to a project?
+  should_refuse: false
+  expected_sources: [concepts/projects/dependencies.md, guides/projects.md]
+  expected_terms: ["uv add"]
+
+- id: lockfile
+  category: howto
+  question: What is the uv.lock file?
+  should_refuse: false
+  expected_sources: [concepts/projects/layout.md, guides/projects.md]
+  expected_terms: ["uv.lock"]
+
+- id: script-dependencies
+  category: howto
+  question: How do I run a script that declares its own dependencies?
+  should_refuse: false
+  expected_sources: [guides/scripts.md]
+  expected_terms: ["uv run"]
+
+- id: tool-install
+  category: howto
+  question: How do I install a command-line tool globally?
+  should_refuse: false
+  expected_sources: [guides/tools.md, concepts/tools.md]
+  expected_terms: ["uv tool install"]
+  notes: Refus à tort observé lors du premier essai manuel.
+
+- id: custom-index
+  category: howto
+  question: How do I configure a custom package index?
+  should_refuse: false
+  expected_sources: [concepts/indexes.md]
+  expected_terms: ["[[tool.uv.index]]"]
+
+- id: docker-usage
+  category: howto
+  question: How can I use uv in a Docker image?
+  should_refuse: false
+  expected_sources: [guides/integration/docker.md]
+  expected_terms: ["ghcr.io/astral-sh/uv"]
+
+- id: pin-python-reformulated
+  category: reformulated
+  question: How do I make my project always use the same Python version?
+  should_refuse: false
+  expected_sources: [concepts/python-versions.md]
+  expected_terms: ["uv python pin"]
+
+
+
+  # --- Questions de détail ---
+
+- id: cache-directory-variable
+  category: detail
+  question: Which environment variable sets the directory where uv stores its cache?
+  should_refuse: false
+  expected_sources: [concepts/cache.md]
+  expected_terms: ["UV_CACHE_DIR"]
+
+- id: cache-clean-command
+  category: detail
+  question: What command removes everything from the uv cache?
+  should_refuse: false
+  expected_sources: [concepts/cache.md]
+  expected_terms: ["uv cache clean"]
+
+- id: sync-locked-flag
+  category: detail
+  question: What does the --locked option do when running uv sync?
+  should_refuse: false
+  expected_sources: [concepts/projects/sync.md]
+  expected_terms: ["--locked"]
+
+- id: run-with-extra-package
+  category: detail
+  question: How do I run a command with an additional package without adding it to the project?
+  should_refuse: false
+  expected_sources: [concepts/projects/run.md]
+  expected_terms: ["--with"]
+
+- id: script-inline-metadata
+  category: detail
+  question: How do I create a new script file that has inline dependency metadata?
+  should_refuse: false
+  expected_sources: [guides/scripts.md]
+  expected_terms: ["uv init --script"]
+
+- id: export-requirements
+  category: detail
+  question: How do I export the lockfile to a requirements.txt file?
+  should_refuse: false
+  expected_sources: [concepts/projects/export.md]
+  expected_terms: ["uv export"]
+
+- id: git-dependency
+  category: detail
+  question: How do I add a dependency that comes from a Git repository?
+  should_refuse: false
+  expected_sources: [concepts/projects/dependencies.md]
+  expected_terms: ["git+https"]
+
+- id: dev-dependency
+  category: detail
+  question: How do I add a dependency that is only needed for development?
+  should_refuse: false
+  expected_sources: [concepts/projects/dependencies.md]
+  expected_terms: ["--dev"]
+
+- id: workspace-definition
+  category: detail
+  question: How do I declare a workspace made of several packages?
+  should_refuse: false
+  expected_sources: [concepts/projects/workspaces.md]
+  expected_terms: ["[tool.uv.workspace]"]
+
+- id: publish-package
+  category: detail
+  question: How do I publish a package to PyPI?
+  should_refuse: false
+  expected_sources: [guides/package.md]
+  expected_terms: ["uv publish"]
+
+# --- Reformulations (sans les mots de la documentation) ---
+
+- id: install-python-reformulated
+  category: reformulated
+  question: I need an older interpreter on my machine, how do I get one through uv?
+  should_refuse: false
+  expected_sources: [concepts/python-versions.md, guides/install-python.md]
+  expected_terms: ["uv python install"]
+
+- id: create-project-reformulated
+  category: reformulated
+  question: What is the quickest way to start a brand new Python application with this tool?
+  should_refuse: false
+  expected_sources: [guides/projects.md, concepts/projects/init.md]
+  expected_terms: ["uv init"]
+
+- id: add-dependency-reformulated
+  category: reformulated
+  question: I want my project to use the requests library, what do I run?
+  should_refuse: false
+  expected_sources: [concepts/projects/dependencies.md, guides/projects.md]
+  expected_terms: ["uv add"]
+
+- id: lockfile-reformulated
+  category: reformulated
+  question: Which file records the exact versions of everything my project depends on?
+  should_refuse: false
+  expected_sources: [concepts/projects/layout.md, guides/projects.md]
+  expected_terms: ["uv.lock"]
+
+- id: script-dependencies-reformulated
+  category: reformulated
+  question: How can a standalone Python file bring its own libraries along?
+  should_refuse: false
+  expected_sources: [guides/scripts.md]
+  expected_terms: ["uv run"]
+
+- id: tool-install-reformulated
+  category: reformulated
+  question: How do I get a Python command-line program available in my terminal without touching my project?
+  should_refuse: false
+  expected_sources: [guides/tools.md, concepts/tools.md]
+  expected_terms: ["uv tool install"]
+
+- id: custom-index-reformulated
+  category: reformulated
+  question: My company runs its own PyPI-like server, how do I make uv use it?
+  should_refuse: false
+  expected_sources: [concepts/indexes.md]
+  expected_terms: ["[[tool.uv.index]]"]
+
+# --- Questions en français ---
+- id: install-python-fr
+  category: french
+  question: Comment installer une version précise de Python avec uv ?
+  should_refuse: false
+  expected_sources: [concepts/python-versions.md]
+  expected_terms: ["uv python install"]
+
+- id: pin-python-fr
+  category: french
+  question: Comment fixer la version de Python d'un projet ?
+  should_refuse: false
+  expected_sources: [concepts/python-versions.md]
+  expected_terms: ["uv python pin"]
+  notes: Mauvaise recherche observée, modèle d'embeddings anglais.
+  
+- id: create-project-fr
+  category: french
+  question: Comment créer un nouveau projet avec uv ?
+  should_refuse: false
+  expected_sources: [guides/projects.md, concepts/projects/init.md]
+  expected_terms: ["uv init"]
+
+- id: add-dependency-fr
+  category: french
+  question: Comment ajouter une dépendance à mon projet ?
+  should_refuse: false
+  expected_sources: [concepts/projects/dependencies.md, guides/projects.md]
+  expected_terms: ["uv add"]
+
+- id: lockfile-fr
+  category: french
+  question: À quoi sert le fichier uv.lock ?
+  should_refuse: false
+  expected_sources: [concepts/projects/layout.md, guides/projects.md]
+  expected_terms: ["uv.lock"]
+
+- id: docker-usage-fr
+  category: french
+  question: Comment conteneuriser une application avec uv ?
+  should_refuse: false
+  expected_sources: [guides/integration/docker.md]
+  expected_terms: ["ghcr.io/astral-sh/uv"]
+  notes: Vocabulaire traduit (conteneuriser pour Docker image).
+
+- id: script-dependencies-fr
+  category: french
+  question: Comment lancer un script qui embarque ses propres bibliothèques ?
+  should_refuse: false
+  expected_sources: [guides/scripts.md]
+  expected_terms: ["uv run"]
+  notes: Vocabulaire traduit.
+
+- id: cache-clean-fr
+  category: french
+  question: Comment vider le cache de uv ?
+  should_refuse: false
+  expected_sources: [concepts/cache.md]
+  expected_terms: ["uv cache clean"]
+  notes: Vocabulaire traduit (vider pour clean).
+
+# --- Sujets voisins, absents du corpus : le modèle doit refuser ---
+
+- id: kubernetes-autoscaling
+  category: adjacent
+  question: How do I configure Kubernetes autoscaling for my application?
+  should_refuse: true
+  absent_terms: ["Kubernetes"]
+
+- id: jenkins-pipeline
+  category: adjacent
+  question: How do I use uv in a Jenkins pipeline?
+  should_refuse: true
+  absent_terms: ["Jenkins"]
+
+- id: conda-forge-publish
+  category: adjacent
+  question: How do I publish a package to conda-forge?
+  should_refuse: true
+  absent_terms: ["conda-forge"]
+
+- id: nvm-node-versions
+  category: adjacent
+  question: How do I manage Node.js versions with uv?
+  should_refuse: true
+  absent_terms: ["nvm"]
+
+- id: pipenv-migration
+  category: adjacent
+  question: How do I migrate my project from Pipenv to uv?
+  should_refuse: true
+  absent_terms: ["Pipenv"]
+
+# --- Sujets sans rapport ---
+- id: capital-of-australia
+  category: out_of_scope
+  question: What is the capital of Australia?
+  should_refuse: true
+  absent_terms: ["Australia"]
+
+- id: carbonara-recipe
+  category: out_of_scope
+  question: What is the recipe for spaghetti carbonara?
+  should_refuse: true
+  absent_terms: ["carbonara"]
+
+- id: world-cup-2018
+  category: out_of_scope
+  question: Who won the 2018 football World Cup?
+  should_refuse: true
+  absent_terms: ["World Cup"]

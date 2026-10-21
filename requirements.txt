@@ -6,3 +6,4 @@ fastembed
 pgvector
 psycopg[binary]
 openai
+pyyaml
