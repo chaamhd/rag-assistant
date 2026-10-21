@@ -1,0 +1,12 @@
+# Questions pertinentes
+How do I install a specific Python version with uv?
+How do I create a new project with uv?
+How do I add a dependency to a project?
+What is the uv.lock file?
+How do I run a script that declares its own dependencies?
+How do I install a command-line tool globally?
+How can I use uv in a Docker image?
+How do I configure a custom package index?
+# Pièges
+How do I configure Kubernetes autoscaling for my application?
+Comment installer une version précise de Python avec uv ?

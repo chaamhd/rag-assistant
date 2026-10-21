@@ -1,13 +1,16 @@
 import json
+import logging
 from collections.abc import Iterator
 
-from fastapi import FastAPI
+import psycopg
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
 
 from app.rag import Event, answer_events
 from app.schemas import AskRequest
 from app.search import search
 
+logger = logging.getLogger(__name__)
 app = FastAPI(title="RAG Assistant")
 
 
@@ -23,7 +26,13 @@ def to_sse(events: Iterator[Event]) -> Iterator[str]:
 
 @app.post("/ask")
 def ask(request: AskRequest) -> StreamingResponse:
-    results = search(request.question)
+    try:
+        results = search(request.question)
+    except psycopg.Error:
+        logger.exception("Recherche impossible : la base de données ne répond pas")
+        raise HTTPException(
+            status_code=503, detail="The search service is unavailable."
+        )
     return StreamingResponse(
         to_sse(answer_events(request.question, results)),
         media_type="text/event-stream",
