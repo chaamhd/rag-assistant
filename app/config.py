@@ -22,6 +22,16 @@ class Settings(BaseSettings):
     llm_api_key: SecretStr 
     llm_model: str 
 
+    # Recherche et génération
+    search_top_k: int = Field(gt=0)
+    llm_temperature: float = Field(ge=0, le=2)
+    llm_timeout_seconds: float = Field(gt=0)
+    llm_max_retries: int = Field(ge=0)
+
+    # API
+    question_max_chars: int = Field(gt=0)
+
+
     @property
     def database_dsn(self) -> str:
         return make_conninfo(

@@ -1,5 +1,8 @@
+from __future__ import annotations
+
 from dataclasses import dataclass
 
+from app.config import settings
 from app.db import connect
 from app.embeddings import embed_query
 
@@ -25,7 +28,8 @@ class SearchResult:
 
 def search(question: str, k: int = DEFAULT_TOP_K) -> list[SearchResult]:
     """Retourne les k passages les plus proches de la question, du meilleur au moins bon."""
+    limit = settings.search_top_k if k is None else k
     query_vector = embed_query(question)
     with connect() as conn:
-        rows = conn.execute(SEARCH_SQL, {"q": query_vector, "k": k}).fetchall()
+        rows = conn.execute(SEARCH_SQL, {"q": query_vector, "k": limit}).fetchall()
     return [SearchResult(*row) for row in rows]
