@@ -1,3 +1,4 @@
+from typing import Literal
 from psycopg.conninfo import make_conninfo
 from pydantic import Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -24,6 +25,10 @@ class Settings(BaseSettings):
 
     # Recherche et génération
     search_top_k: int = Field(gt=0)
+    search_mode: Literal["vector", "hybrid"]  
+    search_candidates: int = Field(gt=0)     
+    rrf_k: int = Field(gt=0)                 
+    fts_language: str = Field(pattern=r"^[a-z_]+$") 
     llm_temperature: float = Field(ge=0, le=2)
     llm_timeout_seconds: float = Field(gt=0)
     llm_max_retries: int = Field(ge=0)

@@ -16,9 +16,14 @@ CREATE TABLE chunks (
     section     TEXT NOT NULL,
     chunk_index INT  NOT NULL,
     text        TEXT NOT NULL,
-    embedding   vector({settings.embedding_dim}) NOT NULL
+    embedding   vector({settings.embedding_dim}) NOT NULL,
+    tsv         tsvector GENERATED ALWAYS AS (
+        to_tsvector('{settings.fts_language}', title || ' ' || section || ' ' || text)
+    ) STORED
 )
 """
+
+INDEX = "CREATE INDEX chunks_tsv_idx ON chunks USING GIN (tsv)"
 
 INSERT = (
     "INSERT INTO chunks (id, source, title, section, chunk_index, text, embedding) "
@@ -57,6 +62,8 @@ def main() -> None:
                     ],
                 )
             print(f"  {min(start + BATCH_SIZE, len(chunks))}/{len(chunks)}")
+
+        conn.execute(INDEX)
 
     print("Terminé.")
 

@@ -105,6 +105,48 @@ car une page contient plusieurs passages. Le critère « les termes attendus
 figurent dans les 5 passages » (`scripts/context_check.py`) est plus fiable,
 même s'il reste indulgent.
 
+### Mesure rapide de la recherche
+
+Pour tester la recherche sans attendre l'évaluation complète (environ 30 minutes),
+un script mesure seulement la recherche, sans modèle de langage : quelques secondes.
+
+```bash
+python -m scripts.retrieval_eval eval/dataset.yaml --ks 5 10 20
+```
+
+Pour chaque question avec réponse, il indique si tous les termes attendus figurent
+dans les k premiers passages. À k = 5, il retrouve le résultat de
+`scripts/context_check.py`.
+
+| k | Termes attendus trouvés | Bonne page trouvée |
+|---|---|---|
+| 5 | 83 % (29/35) | 83 % (29/35) |
+| 10 | 89 % (31/35) | 94 % (33/35) |
+| 20 | 97 % (34/35) | 97 % (34/35) |
+
+Pour 34 questions sur 35, la réponse figure dans les 20 premiers passages : la marge
+d'amélioration est surtout dans le classement. Les 6 échecs à k = 5 sont des questions
+reformulées (4 sur 8) et en français (2 sur 8) ; les guides et les détails sont à 100 %
+dès k = 5. À k = 10, l'écart entre les deux colonnes confirme que « bonne page trouvée »
+est un critère indulgent.
+
+Détail : `eval/results/retrieval_depart.txt`.
+
+#### Recherche hybride (testée, non retenue)
+
+Test : recherche plein texte PostgreSQL combinée à la recherche vectorielle
+(fusion RRF), activable avec `SEARCH_MODE=hybrid`.
+
+| k | Vectoriel seul | Hybride |
+|---|---|---|
+| 5 | 29/35 | 29/35 |
+| 10 | 31/35 | 32/35 |
+| 20 | 34/35 | 34/35 |
+
+À k = 5, le score est identique : 3 questions gagnées (reformulées et françaises)
+mais 3 perdues, dont une question de détail. Le gain minimal de 3 questions n'est pas
+atteint, donc le mode reste `vector`. Détail : `eval/results/retrieval_hybride.txt`.
+
 ## Limites connues
 
 - La recherche échoue quand la question n'emploie pas le vocabulaire de la
