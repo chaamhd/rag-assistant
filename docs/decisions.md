@@ -10,3 +10,4 @@
 | Passages envoyés séparément de la réponse (SSE) | Le client décide de les afficher ; pas de « sources » sous un refus | Quatre types d'événements à gérer côté client |
 | Prompt strict : passages seulement, citations, refus | Mesurer le RAG et non la mémoire du modèle | Un petit modèle refuse parfois à tort |
 | Prompt non modifié avant l'évaluation | Corriger avec des mesures avant/après, pas au ressenti | Défauts connus conservés quelques jours |
+| Mesurer la recherche séparément de la génération (`scripts/retrieval_eval.py`, sans modèle de langage) | Une mesure prend quelques secondes au lieu de 30 minutes : chaque levier de recherche (hybride, reranking, taille des passages) se teste isolément | Elle vérifie la présence des termes attendus dans les passages, pas la qualité de la réponse finale : l'évaluation complète reste nécessaire pour conclure |
