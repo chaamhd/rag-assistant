@@ -42,9 +42,10 @@ curl -N -X POST http://localhost:8000/ask \
 
 ## Fonctionnement
 
-Question → embedding → recherche des 5 passages les plus proches (pgvector)
-→ prompt avec passages numérotés → modèle de langage (Ollama) → réponse en
-streaming. Le schéma d'architecture sera ajouté à la fin du projet.
+Question → embedding → recherche des 20 passages les plus proches (pgvector)
+→ reranking (les 6 meilleurs passages sont gardés) → prompt avec passages
+numérotés → modèle de langage (Ollama) → réponse en streaming. Le schéma
+d'architecture sera ajouté à la fin du projet.
 
 Les choix techniques et leurs compromis sont dans [docs/decisions.md](docs/decisions.md).
 
@@ -147,7 +148,7 @@ Test : recherche plein texte PostgreSQL combinée à la recherche vectorielle
 mais 3 perdues, dont une question de détail. Le gain minimal de 3 questions n'est pas
 atteint, donc le mode reste `vector`. Détail : `eval/results/retrieval_hybride.txt`.
 
-#### Reranking (retenu, sous réserve de l'évaluation complète)
+#### Reranking (retenu)
 
 Test : un modèle de reranking (`Xenova/ms-marco-MiniLM-L-6-v2`) relit 20 candidats
 et garde les k meilleurs (`RERANK_ENABLED=true`, `RERANK_CANDIDATES=20`).
@@ -163,9 +164,38 @@ et garde les k meilleurs (`RERANK_ENABLED=true`, `RERANK_CANDIDATES=20`).
 
 Le gain n'est que de 1 question à k = 5, mais de 3 à k = 6 : le reranker place les
 bons passages juste après la 5e position. Aucune perte sur les guides et les détails.
-La recherche prend environ 1 seconde par question. Configuration candidate : reranking
-activé et 6 passages (`SEARCH_TOP_K=6`), à valider par l'évaluation complète.
+La recherche prend environ 1 seconde par question. Configuration adoptée : reranking
+activé et 6 passages (`SEARCH_TOP_K=6`), validée par l'évaluation complète ci-dessous.
 Détail : `eval/results/retrieval_k5-8_vector.txt` et `eval/results/retrieval_k5-8_rerank.txt`.
+
+### Résultats après reranking
+
+Configuration : recherche vectorielle, 20 candidats réordonnés par un cross-encoder,
+6 passages envoyés au modèle (`RERANK_ENABLED=true`, `SEARCH_TOP_K=6`). Même jeu de
+43 questions, 3 essais chacune. Durée : 13,5 minutes.
+Détail : `eval/results/rerank-k6.json`.
+
+| Indicateur | Départ | Reranking + 6 passages |
+|---|---|---|
+| Réponses correctes | 67 % (70/105) | 86 % (90/105) |
+| Refus à tort | 14 % (15/105) | 11 % (12/105) |
+| Refus corrects sur les questions sans réponse | 100 % (24/24) | 100 % (24/24) |
+| Réponses avec du code absent des passages | 28 % (25/90) | 12 % (11/93) |
+| Questions dont le résultat varie d'un essai à l'autre | 1 sur 43 | 0 sur 43 |
+
+| Catégorie (résultat correct) | Départ | Maintenant |
+|---|---|---|
+| Guides (howto) | 89 % | 89 % |
+| Détails | 73 % | 100 % |
+| Reformulées | 25 % | 50 % |
+| Français | 75 % | 100 % |
+| Sujets voisins ou sans rapport | 100 % | 100 % |
+
+Le reranking et le passage de 5 à 6 passages ont été mesurés ensemble : la part de
+chacun n'est pas séparée pour la génération. Pour la recherche seule, à 6 passages, les
+termes attendus sont présents pour 33 questions sur 35 avec reranking contre 30 sans.
+Il reste surtout des échecs sur les questions reformulées (50 %), en grande partie des
+refus à tort alors que la réponse est dans les passages.
 
 ## Limites connues
 
