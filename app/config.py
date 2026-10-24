@@ -28,7 +28,10 @@ class Settings(BaseSettings):
     search_mode: Literal["vector", "hybrid"]  
     search_candidates: int = Field(gt=0)     
     rrf_k: int = Field(gt=0)                 
-    fts_language: str = Field(pattern=r"^[a-z_]+$") 
+    fts_language: str = Field(pattern=r"^[a-z_]+$")
+    rerank_enabled: bool                       
+    rerank_model: str                          
+    rerank_candidates: int = Field(gt=0)       
     llm_temperature: float = Field(ge=0, le=2)
     llm_timeout_seconds: float = Field(gt=0)
     llm_max_retries: int = Field(ge=0)

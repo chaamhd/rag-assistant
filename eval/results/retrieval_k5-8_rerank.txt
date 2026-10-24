@@ -1,0 +1,27 @@
+35 questions avec réponse
+
+Questions dont les passages contiennent TOUS les termes attendus :
+  k =  5 : 30/35 (86 %)
+  k =  6 : 33/35 (94 %)
+  k =  7 : 33/35 (94 %)
+  k =  8 : 34/35 (97 %)
+
+Bonne page parmi les k premiers passages (critère indulgent) :
+  k =  5 : 30/35 (86 %)
+  k =  6 : 31/35 (89 %)
+  k =  7 : 31/35 (89 %)
+  k =  8 : 32/35 (91 %)
+
+Termes attendus trouvés, par catégorie (nombre de questions) :
+  catégorie       n     k=5     k=6     k=7     k=8
+  howto           9       9       9       9       9
+  detail         10      10      10      10      10
+  reformulated    8       3       6       6       7
+  french          8       8       8       8       8
+
+Questions non résolues à k = 5 :
+  pin-python-reformulated            reformulated  termes : k = 8            page : rang 6
+  add-dependency-reformulated        reformulated  termes : k = 6            page : absente
+  lockfile-reformulated              reformulated  termes : k = 6            page : rang 2
+  tool-install-reformulated          reformulated  termes : jamais (k ≤ 8)   page : absente
+  custom-index-reformulated          reformulated  termes : k = 6            page : absente

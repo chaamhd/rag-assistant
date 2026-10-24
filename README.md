@@ -147,6 +147,26 @@ Test : recherche plein texte PostgreSQL combinée à la recherche vectorielle
 mais 3 perdues, dont une question de détail. Le gain minimal de 3 questions n'est pas
 atteint, donc le mode reste `vector`. Détail : `eval/results/retrieval_hybride.txt`.
 
+#### Reranking (retenu, sous réserve de l'évaluation complète)
+
+Test : un modèle de reranking (`Xenova/ms-marco-MiniLM-L-6-v2`) relit 20 candidats
+et garde les k meilleurs (`RERANK_ENABLED=true`, `RERANK_CANDIDATES=20`).
+
+| k | Sans reranking | Avec reranking |
+|---|---|---|
+| 5 | 29/35 | 30/35 |
+| 6 | 30/35 | 33/35 |
+| 7 | 31/35 | 33/35 |
+| 8 | 31/35 | 34/35 |
+| 10 | 31/35 | 34/35 |
+| 20 | 34/35 | 34/35 |
+
+Le gain n'est que de 1 question à k = 5, mais de 3 à k = 6 : le reranker place les
+bons passages juste après la 5e position. Aucune perte sur les guides et les détails.
+La recherche prend environ 1 seconde par question. Configuration candidate : reranking
+activé et 6 passages (`SEARCH_TOP_K=6`), à valider par l'évaluation complète.
+Détail : `eval/results/retrieval_k5-8_vector.txt` et `eval/results/retrieval_k5-8_rerank.txt`.
+
 ## Limites connues
 
 - La recherche échoue quand la question n'emploie pas le vocabulaire de la

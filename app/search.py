@@ -8,6 +8,7 @@ import psycopg
 from app.config import settings
 from app.db import connect
 from app.embeddings import embed_query
+from app.rerank import rerank
 
 COLUMNS = "id, source, title, section, text, 1 - (embedding <=> %(q)s) AS score"
 
@@ -87,4 +88,7 @@ def retrieve(question: str, pool: int) -> list[SearchResult]:
 def search(question: str, k: int | None = None) -> list[SearchResult]:
     """Retourne les k meilleurs passages (k = config par défaut)."""
     limit = settings.search_top_k if k is None else k
-    return retrieve(question, pool=limit)
+    if not settings.rerank_enabled:
+        return retrieve(question, pool=limit)
+    pool = max(limit, settings.rerank_candidates)
+    return rerank(question, retrieve(question, pool=pool))[:limit]
