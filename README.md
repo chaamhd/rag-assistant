@@ -64,6 +64,32 @@ python -m scripts.diagnose eval/results/baseline.json eval/dataset.yaml
 Une réponse est « correcte » si le modèle ne refuse pas et si tous les termes
 attendus (commandes, options) y figurent.
 
+### Rejouer une partie des questions et comparer
+
+Pour vérifier un changement sans attendre l'évaluation complète, on peut ne rejouer
+que certaines questions :
+
+```bash
+python -m scripts.evaluate eval/dataset.yaml --runs 3 --category reformulated --output eval/results/reformulated.json
+python -m scripts.evaluate eval/dataset.yaml --runs 3 --ids lockfile-reformulated pin-python-fr --output eval/results/test.json
+```
+
+Le résumé indique l'origine des échecs : réponse absente des passages (problème de
+recherche) ou présente mais mal utilisée (problème de génération), ainsi que les
+réponses à côté (le modèle répond sans refuser, mais il manque des termes attendus).
+Chaque fichier de résultats enregistre la configuration utilisée : mode de recherche,
+nombre de passages, reranking.
+
+Deux fichiers de résultats se comparent avec :
+
+```bash
+python -m scripts.compare_results eval/results/baseline.json eval/results/rerank-k6.json
+```
+
+Le script affiche les écarts par indicateur et par catégorie, les questions améliorées
+ou dégradées, et signale tout recul. Seules les questions présentes dans les deux
+fichiers sont comparées.
+
 ### Score de départ
 
 Modèle qwen2.5:7b local, recherche vectorielle seule, 5 passages.

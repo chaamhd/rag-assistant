@@ -14,13 +14,16 @@ from app.llm import LLMError, generate
 from app.prompts import build_messages
 from app.search import search
 from scripts.dataset import DatasetError, Question, load_dataset
-from scripts.eval_metrics import first_rank, score_answer
+from scripts.eval_metrics import all_terms_present, first_rank, score_answer
 
 
 def evaluate_question(q: Question, runs: int) -> dict:
     results = search(q.question)  # la recherche est déterministe : une seule fois
     sources = [r.source for r in results]
     passages_text = "\n".join(r.text for r in results)
+    terms_in_context = (
+        None if q.should_refuse else all_terms_present(passages_text, q.expected_terms)
+    )
 
     outcomes = []
     for _ in range(runs):
@@ -47,6 +50,7 @@ def evaluate_question(q: Question, runs: int) -> dict:
             for r in results
         ],
         "rank": None if q.should_refuse else first_rank(sources, q.expected_sources),
+        "terms_in_context": terms_in_context,
         "top_score": round(results[0].score, 4) if results else None,
         "runs": outcomes,
     }
@@ -98,10 +102,24 @@ def print_summary(records: list[dict]) -> None:
     print(f"\n{line}\nRÉPONSES (questions avec réponse, tous essais confondus)")
     print(f"  Réponses correctes   : {pct(sum(o['correct'] for o in runs), len(runs))}")
     print(f"  Refus à tort         : {pct(sum(o['refused'] for o in runs), len(runs))}")
+    off_target = [o for o in runs if not o["refused"] and not o["correct"]]
+    print(f"  Réponses à côté      : {pct(len(off_target), len(runs))}")
     print(f"  Parmi les {len(answered)} réponses non refusées :")
     print(f"    avec une citation valide     : {pct(sum(o['has_citation'] for o in answered), len(answered))}")
     print(f"    citent une page attendue     : {pct(sum(o['cites_expected_source'] for o in answered), len(answered))}")
     print(f"    avec du code absent des passages : {pct(sum(bool(o['unsupported_snippets']) for o in answered), len(answered))}")
+
+    failed = [(r, o) for r in answerable for o in r["runs"] if not o["correct"]]
+    print(f"\n{line}\nORIGINE DES ÉCHECS (questions avec réponse)")
+    print(f"  Essais en échec : {pct(len(failed), len(runs))}")
+    for label, in_context in (
+        ("réponse absente des passages (recherche)", False),
+        ("réponse présente dans les passages (génération)", True),
+    ):
+        group = [o for r, o in failed if r["terms_in_context"] == in_context]
+        refused_count = sum(o["refused"] for o in group)
+        print(f"    {label} : {len(group)}")
+        print(f"        dont refus : {refused_count} | réponses à côté : {len(group) - refused_count}")
 
     ref_runs = [o for r in refusals for o in r["runs"]]
     refused_ok = [o for o in ref_runs if o["correct"]]
@@ -201,6 +219,8 @@ def main() -> int:
     parser.add_argument("--runs", type=int, required=True, help="essais par question")
     parser.add_argument("--output", type=Path, required=True, help="résultats JSON détaillés")
     parser.add_argument("--limit", type=int, help="ne traiter que les N premières questions")
+    parser.add_argument("--category", nargs="+", help="ne traiter que ces catégories")
+    parser.add_argument("--ids", nargs="+", help="ne traiter que ces questions (identifiants)")
     args = parser.parse_args()
     if args.runs < 1:
         parser.error("--runs doit valoir au moins 1")
@@ -210,8 +230,17 @@ def main() -> int:
     except DatasetError as exc:
         print(f"Jeu de questions invalide :\n{exc}")
         return 1
+    if args.ids:
+        unknown = sorted(set(args.ids) - {q.id for q in questions})
+        if unknown:
+            parser.error(f"identifiants inconnus : {', '.join(unknown)}")
+        questions = [q for q in questions if q.id in args.ids]
+    if args.category:
+        questions = [q for q in questions if q.category in args.category]
     if args.limit:
         questions = questions[: args.limit]
+    if not questions:
+        parser.error("aucune question sélectionnée")
 
     records = []
     started = time.perf_counter()
@@ -237,11 +266,17 @@ def main() -> int:
             "git_commit": git_commit(),
             "dataset": str(args.dataset),
             "questions": len(questions),
+            "filters": {"ids": args.ids, "category": args.category, "limit": args.limit},
             "runs": args.runs,
             "llm_model": settings.llm_model,
             "llm_temperature": settings.llm_temperature,
             "embedding_model": settings.embedding_model,
             "search_top_k": settings.search_top_k,
+            "search_mode": settings.search_mode,
+            "rerank_enabled": settings.rerank_enabled,
+            "rerank_model": settings.rerank_model,
+            "rerank_candidates": settings.rerank_candidates,
+
         },
         "questions": records,
     }
