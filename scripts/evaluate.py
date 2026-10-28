@@ -21,8 +21,13 @@ def evaluate_question(q: Question, runs: int) -> dict:
     results = search(q.question)  # la recherche est déterministe : une seule fois
     sources = [r.source for r in results]
     passages_text = "\n".join(r.text for r in results)
-    terms_in_context = (
-        None if q.should_refuse else all_terms_present(passages_text, q.expected_terms)
+    expected_pages_text = "\n".join(
+        r.text for r in results if r.source in q.expected_sources
+    )
+    terms_in_expected_pages = (
+        None
+        if q.should_refuse
+        else all_terms_present(expected_pages_text, q.expected_terms)
     )
 
     outcomes = []
@@ -50,7 +55,7 @@ def evaluate_question(q: Question, runs: int) -> dict:
             for r in results
         ],
         "rank": None if q.should_refuse else first_rank(sources, q.expected_sources),
-        "terms_in_context": terms_in_context,
+        "terms_in_expected_pages": terms_in_expected_pages,
         "top_score": round(results[0].score, 4) if results else None,
         "runs": outcomes,
     }
@@ -112,11 +117,11 @@ def print_summary(records: list[dict]) -> None:
     failed = [(r, o) for r in answerable for o in r["runs"] if not o["correct"]]
     print(f"\n{line}\nORIGINE DES ÉCHECS (questions avec réponse)")
     print(f"  Essais en échec : {pct(len(failed), len(runs))}")
-    for label, in_context in (
-        ("réponse absente des passages (recherche)", False),
-        ("réponse présente dans les passages (génération)", True),
+    for label, in_expected_pages in (
+        ("page attendue absente, ou sans les termes (recherche)", False),
+        ("page attendue présente avec les termes (génération)", True),
     ):
-        group = [o for r, o in failed if r["terms_in_context"] == in_context]
+        group = [o for r, o in failed if r["terms_in_expected_pages"] == in_expected_pages]
         refused_count = sum(o["refused"] for o in group)
         print(f"    {label} : {len(group)}")
         print(f"        dont refus : {refused_count} | réponses à côté : {len(group) - refused_count}")

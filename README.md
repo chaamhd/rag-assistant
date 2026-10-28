@@ -74,11 +74,11 @@ python -m scripts.evaluate eval/dataset.yaml --runs 3 --category reformulated --
 python -m scripts.evaluate eval/dataset.yaml --runs 3 --ids lockfile-reformulated pin-python-fr --output eval/results/test.json
 ```
 
-Le résumé indique l'origine des échecs : réponse absente des passages (problème de
-recherche) ou présente mais mal utilisée (problème de génération), ainsi que les
-réponses à côté (le modèle répond sans refuser, mais il manque des termes attendus).
-Chaque fichier de résultats enregistre la configuration utilisée : mode de recherche,
-nombre de passages, reranking.
+Le résumé indique l'origine des échecs : la page attendue est absente des passages ou
+n'a pas les termes attendus (problème de recherche), ou elle est présente avec les
+termes (problème de génération), ainsi que les réponses à côté (le modèle répond sans
+refuser, mais il manque des termes attendus). Chaque fichier de résultats enregistre
+la configuration utilisée : mode de recherche, nombre de passages, reranking.
 
 Deux fichiers de résultats se comparent avec :
 
@@ -220,8 +220,11 @@ Détail : `eval/results/rerank-k6.json`.
 Le reranking et le passage de 5 à 6 passages ont été mesurés ensemble : la part de
 chacun n'est pas séparée pour la génération. Pour la recherche seule, à 6 passages, les
 termes attendus sont présents pour 33 questions sur 35 avec reranking contre 30 sans.
-Il reste surtout des échecs sur les questions reformulées (50 %), en grande partie des
-refus à tort alors que la réponse est dans les passages.
+Il reste 15 essais en échec sur 105, surtout sur des questions reformulées (50 %) :
+9 viennent de la recherche (la page attendue n'est pas dans les 6 passages, ou sans
+les termes attendus) et 6 de la génération (la page est présente, mais le modèle
+refuse à tort). Une règle de refus plus attentive dans le prompt n'a rien amélioré :
+elle n'est pas retenue.
 
 ## Limites connues
 
