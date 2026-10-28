@@ -8,7 +8,7 @@ entièrement en local et gratuitement (embeddings et modèle de langage locaux).
 
 ## Fonctionnalités
 
-- Recherche sémantique dans 634 passages (PostgreSQL + pgvector)
+- Recherche sémantique dans 634 passages (PostgreSQL + pgvector), avec reranking des meilleurs candidats
 - Réponses en streaming (SSE) ; les passages consultés et leurs scores sont
   envoyés séparément de la réponse
 - Refus de répondre quand la documentation ne contient pas l'information
@@ -230,16 +230,27 @@ passages (12 % → 18 %) et baissé les citations valides (86 % → 69 %) : non 
 
 ## Limites connues
 
-- La recherche échoue quand la question n'emploie pas le vocabulaire de la
-  documentation (reformulations, français traduit) : pour 6 questions sur 35,
-  la réponse n'est pas dans les 5 passages envoyés au modèle.
-- Le petit modèle local refuse à tort (14 % des essais) ou répond à côté alors
-  que la réponse est dans les passages. Il déforme parfois des noms de fichiers
-  (`pyproject.toml`).
-- Quand la réponse est absente des passages, il répond faux avec assurance dans
-  la moitié des cas (9 essais sur 18).
-- Deux appels identiques peuvent donner des textes différents, mais le résultat
-  (réussite ou échec) varie peu : 1 question sur 43.
+- Les questions reformulées restent le point faible (50 % de réponses correctes) : quand
+  la question n'emploie pas le vocabulaire de la documentation, la page attendue n'est
+  parfois pas dans les 6 passages envoyés au modèle. C'est l'origine de 9 des 15 essais
+  en échec sur 105. Dans ce cas le modèle refuse (6 essais) ou répond à côté (3 essais).
+- Le petit modèle local refuse encore à tort dans 11 % des essais (12/105). Dans 6 de ces
+  échecs, la page attendue était pourtant dans les passages. Deux essais de prompt (règle de
+  refus plus attentive, recopie exacte des commandes) n'ont rien amélioré : ils ne sont pas
+  retenus.
+- 12 % des réponses non refusées contiennent du code absent des passages (11/93). Ces
+  extraits sont signalés par l'évaluation et se classent à la main.
+- Le reranking et le sixième passage ont été mesurés ensemble : la part de chacun n'est pas
+  séparée pour la génération.
+- Les réglages ont été choisis et mesurés sur le même jeu de 43 questions : les gains sont à
+  confirmer sur de nouvelles questions. Avec 35 questions, une question vaut environ 3 points.
+- Pas testés : un autre modèle d'embeddings, la réécriture de la question par le modèle, un
+  autre modèle de langage local. Le découpage des passages n'a pas été modifié, les scores ne
+  le suggérant pas.
+- Le temps de réponse complet n'est pas mesuré : seule la recherche l'est (environ 1 seconde
+  par question avec le reranking). Le modèle de reranking se télécharge au premier appel.
+- Deux appels identiques peuvent donner des textes différents, mais le résultat (réussite ou
+  échec) ne varie pas : 0 question sur 43 dans la dernière évaluation complète.
 
 ## Corpus
 
