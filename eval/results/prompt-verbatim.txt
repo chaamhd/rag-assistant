@@ -1,0 +1,139 @@
+[1/43] ✓✓✓   install-python-version
+[2/43] ✓✓✓   pin-python-version
+[3/43] ✓✓✓   create-project
+[4/43] ✓✓✓   add-dependency
+[5/43] ✓✓✓   lockfile
+[6/43] ✓✓✓   script-dependencies
+[7/43] ✗✗✗   tool-install
+[8/43] ✓✓✓   custom-index
+[9/43] ✓✓✓   docker-usage
+[10/43] ✓✓✓   cache-directory-variable
+[11/43] ✓✓✓   cache-clean-command
+[12/43] ✓✓✓   sync-locked-flag
+[13/43] ✓✓✓   run-with-extra-package
+[14/43] ✓✓✓   script-inline-metadata
+[15/43] ✓✓✓   export-requirements
+[16/43] ✓✓✓   git-dependency
+[17/43] ✓✓✓   dev-dependency
+[18/43] ✓✓✓   workspace-definition
+[19/43] ✓✓✓   publish-package
+[20/43] ✗✗✗   pin-python-reformulated
+[21/43] ✗✗✗   install-python-reformulated
+[22/43] ✓✓✓   create-project-reformulated
+[23/43] ✓✓✓   add-dependency-reformulated
+[24/43] ✓✓✓   lockfile-reformulated
+[25/43] ✓✓✓   script-dependencies-reformulated
+[26/43] ✗✗✗   tool-install-reformulated
+[27/43] ✗✗✗   custom-index-reformulated
+[28/43] ✓✓✓   install-python-fr
+[29/43] ✓✓✓   pin-python-fr
+[30/43] ✓✓✓   create-project-fr
+[31/43] ✓✓✓   add-dependency-fr
+[32/43] ✓✓✓   lockfile-fr
+[33/43] ✓✓✓   docker-usage-fr
+[34/43] ✓✓✓   script-dependencies-fr
+[35/43] ✓✓✓   cache-clean-fr
+[36/43] ✓✓✓   kubernetes-autoscaling
+[37/43] ✓✓✓   jenkins-pipeline
+[38/43] ✓✓✓   conda-forge-publish
+[39/43] ✓✓✓   nvm-node-versions
+[40/43] ✓✓✓   pipenv-migration
+[41/43] ✓✓✓   capital-of-australia
+[42/43] ✓✓✓   carbonara-recipe
+[43/43] ✓✓✓   world-cup-2018
+
+==================================================================
+RECHERCHE (questions avec réponse : 35)
+  Bonne page dans les 6 premiers : 89 % (31/35)
+  MRR (1 = toujours en tête)          : 0.66
+
+==================================================================
+RÉPONSES (questions avec réponse, tous essais confondus)
+  Réponses correctes   : 86 % (90/105)
+  Refus à tort         : 9 % (9/105)
+  Réponses à côté      : 6 % (6/105)
+  Parmi les 96 réponses non refusées :
+    avec une citation valide     : 69 % (66/96)
+    citent une page attendue     : 59 % (57/96)
+    avec du code absent des passages : 18 % (17/96)
+
+==================================================================
+ORIGINE DES ÉCHECS (questions avec réponse)
+  Essais en échec : 14 % (15/105)
+    page attendue absente, ou sans les termes (recherche) : 9
+        dont refus : 6 | réponses à côté : 3
+    page attendue présente avec les termes (génération) : 6
+        dont refus : 3 | réponses à côté : 3
+
+==================================================================
+REFUS (questions sans réponse : 8)
+  Refus corrects       : 100 % (24/24)
+  Refus avec citation  : 8 % (2/24)
+
+==================================================================
+STABILITÉ
+  0 question(s) sur 43 changent de résultat d'un essai à l'autre
+
+==================================================================
+PAR CATÉGORIE
+  catégorie       n   page trouvée  résultat correct
+  adjacent        5   —             100 % (15/15)
+  detail         10   100 % (10/10) 100 % (30/30)
+  french          8   88 % (7/8)    100 % (24/24)
+  howto           9   100 % (9/9)   89 % (24/27)
+  out_of_scope    3   —             100 % (9/9)
+  reformulated    8   62 % (5/8)    50 % (12/24)
+
+==================================================================
+SCORE DU MEILLEUR PASSAGE
+  questions avec réponse : min 0.60 | médiane 0.75 | max 0.86
+  questions sans réponse : min 0.38 | médiane 0.67 | max 0.79
+  Indicatif : un seuil à 0.60 donnerait 5 erreur(s) sur 43 questions (non appliqué)
+
+==================================================================
+À RELIRE (premier essai fautif de chaque question)
+  - tool-install (refus à tort)
+      The documentation does not contain information on how to install a command-line tool globally. It only describes how to install tools in a default directory [1]
+  - pin-python-reformulated (termes attendus absents)
+      To make your project always use the same Python version, you can set the `requires-python` field in the `pyproject.toml` file. For example: ```toml title="pypro
+  - install-python-reformulated (termes attendus absents)
+      To get an older Python interpreter on your machine using uv, you can use the `--python` option to specify the version you need. For example, to install a specif
+  - tool-install-reformulated (refus à tort)
+      The documentation does not contain information on how to get a Python command-line program available in your terminal without touching your project. The passage
+  - custom-index-reformulated (refus à tort)
+      The documentation does not contain information on how to configure uv to use a company's own PyPI-like server.
+
+==================================================================
+À CLASSER À LA MAIN : code absent des passages, citations hors pages attendues
+  - pin-python-version
+      code : ['uv python pin 3.12', 'uv python pin --global 3.12']
+      pages citées hors pages attendues : ['concepts/projects/config.md']
+  - tool-install
+      pages citées hors pages attendues : ['reference/storage.md', 'pip/compatibility.md']
+  - cache-directory-variable
+      pages citées hors pages attendues : ['reference/storage.md']
+  - publish-package
+      code : ['uv publish --index testpypi']
+  - pin-python-reformulated
+      pages citées hors pages attendues : ['concepts/projects/config.md']
+  - install-python-reformulated
+      code : ['uv tool install --python 3.8.10 ruff', '3.8.10']
+      pages citées hors pages attendues : ['guides/tools.md']
+  - create-project-reformulated
+      pages citées hors pages attendues : ['index.md']
+  - add-dependency-reformulated
+      code : ['uv add requests']
+  - lockfile-reformulated
+      pages citées hors pages attendues : ['reference/internals/metadata.md']
+  - script-dependencies-reformulated
+      code : ['uv run <script>.py', 'uv run example.py']
+      pages citées hors pages attendues : ['getting-started/features.md']
+  - install-python-fr
+      pages citées hors pages attendues : ['index.md']
+  - pin-python-fr
+      code : ['uv python install 3.12.3 --no-config', 'uv python pin --no-config']
+  - lockfile-fr
+      pages citées hors pages attendues : ['guides/migration/pip-to-project.md', 'concepts/resolution.md', 'guides/scripts.md', 'guides/integration/renovate.md']
+
+Durée : 17.7 min
+Résultats détaillés : eval/results/prompt-verbatim.json

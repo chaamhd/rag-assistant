@@ -225,6 +225,8 @@ Il reste 15 essais en échec sur 105, surtout sur des questions reformulées (50
 les termes attendus) et 6 de la génération (la page est présente, mais le modèle
 refuse à tort). Une règle de refus plus attentive dans le prompt n'a rien amélioré :
 elle n'est pas retenue.
+Demander au modèle de recopier les commandes à l'identique a augmenté le code absent des
+passages (12 % → 18 %) et baissé les citations valides (86 % → 69 %) : non retenu.
 
 ## Limites connues
 

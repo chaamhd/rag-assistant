@@ -1,0 +1,3603 @@
+{
+  "meta": {
+    "date": "2026-10-28T09:36:37+00:00",
+    "git_commit": "3dabe4b",
+    "dataset": "eval/dataset.yaml",
+    "questions": 43,
+    "filters": {
+      "ids": null,
+      "category": null,
+      "limit": null
+    },
+    "runs": 3,
+    "llm_model": "qwen2.5-rag",
+    "llm_temperature": 0.1,
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "search_top_k": 6,
+    "search_mode": "vector",
+    "rerank_enabled": true,
+    "rerank_model": "Xenova/ms-marco-MiniLM-L-6-v2",
+    "rerank_candidates": 20
+  },
+  "questions": [
+    {
+      "id": "install-python-version",
+      "category": "howto",
+      "question": "How do I install a specific Python version with uv?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/python-versions.md",
+        "guides/install-python.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/python-versions.md",
+          "section": "Python versions > Installing a Python version",
+          "score": 0.8633
+        },
+        {
+          "source": "guides/install-python.md",
+          "section": "Installing Python > Installing a specific version",
+          "score": 0.8285
+        },
+        {
+          "source": "concepts/python-versions.md",
+          "section": "Python versions > Requesting a version",
+          "score": 0.8313
+        },
+        {
+          "source": "guides/tools.md",
+          "section": "Using tools > Requesting Python versions",
+          "score": 0.8197
+        },
+        {
+          "source": "guides/install-python.md",
+          "section": "Installing Python > Automatic Python downloads",
+          "score": 0.8259
+        },
+        {
+          "source": "guides/install-python.md",
+          "section": "Installing Python > Using existing Python versions",
+          "score": 0.8038
+        }
+      ],
+      "rank": 1,
+      "terms_in_expected_pages": true,
+      "top_score": 0.8633,
+      "runs": [
+        {
+          "answer": "To install a specific Python version with uv, you can use the following command:\n\n```console\n$ uv python install 3.12\n```\n\nThis command installs Python 3.12. You can also install multiple versions at once:\n\n```console\n$ uv python install 3.9 3.10 3.11\n```\n\nFor more details, refer to the documentation [1][2].",
+          "refused": false,
+          "citations": [
+            1,
+            2
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To install a specific Python version with uv, you can use the following command:\n\n```console\n$ uv python install 3.12\n```\n\nThis command installs Python 3.12. You can also install multiple versions at once:\n\n```console\n$ uv python install 3.9 3.10 3.11\n```\n\nFor more details, refer to the documentation [1][2].",
+          "refused": false,
+          "citations": [
+            1,
+            2
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To install a specific Python version with uv, you can use the following command:\n\n```console\n$ uv python install 3.12\n```\n\nThis command installs Python 3.12. You can also install multiple versions at once:\n\n```console\n$ uv python install 3.9 3.10 3.11\n```\n\nFor more details, refer to the documentation [1][2].",
+          "refused": false,
+          "citations": [
+            1,
+            2
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "pin-python-version",
+      "category": "howto",
+      "question": "How can I pin the Python version of a project?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/python-versions.md"
+      ],
+      "retrieved": [
+        {
+          "source": "getting-started/features.md",
+          "section": "Features > Python versions",
+          "score": 0.7641
+        },
+        {
+          "source": "concepts/projects/init.md",
+          "section": "Creating projects > Creating a minimal project",
+          "score": 0.7572
+        },
+        {
+          "source": "concepts/projects/init.md",
+          "section": "Creating projects > Creating a project without a build system",
+          "score": 0.7518
+        },
+        {
+          "source": "concepts/python-versions.md",
+          "section": "Python versions > Requesting a version > Python version files",
+          "score": 0.7698
+        },
+        {
+          "source": "concepts/projects/config.md",
+          "section": "Configuring projects > Python version requirement",
+          "score": 0.7859
+        },
+        {
+          "source": "concepts/python-versions.md",
+          "section": "Python versions > Project Python versions",
+          "score": 0.7315
+        }
+      ],
+      "rank": 4,
+      "terms_in_expected_pages": true,
+      "top_score": 0.7641,
+      "runs": [
+        {
+          "answer": "You can pin the Python version of a project using the `uv python pin` command. This command can be run in the project directory to create a `.python-version` file that specifies the desired Python version. For example:\n\n```console\n$ uv python pin 3.12\n```\n\nThis will create a `.python-version` file in the current directory with the specified Python version. You can also pin a global version for the user by adding the `--global` flag:\n\n```console\n$ uv python pin --global 3.12\n```\n\nThis will create a global `.python-version` file in the user configuration directory. [4][6]",
+          "refused": false,
+          "citations": [
+            4,
+            6
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": [
+            "uv python pin 3.12",
+            "uv python pin --global 3.12"
+          ]
+        },
+        {
+          "answer": "You can pin the Python version of a project using the `uv python pin` command. This command can be run in the project directory to create a `.python-version` file that specifies the desired Python version. Additionally, you can use the `--global` option to pin a Python version globally in the user configuration directory.\n\nTo pin a specific Python version in the project directory:\n\n```console\n$ uv python pin 3.12\n```\n\nTo pin a Python version globally:\n\n```console\n$ uv python pin --global 3.12\n```\n\nThese commands will create or update the `.python-version` file with the specified Python version. [4][6]",
+          "refused": false,
+          "citations": [
+            4,
+            6
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": [
+            "uv python pin 3.12",
+            "uv python pin --global 3.12"
+          ]
+        },
+        {
+          "answer": "You can pin the Python version of a project using the `uv python pin` command. This command can be run in the project directory to create a `.python-version` file that specifies the desired Python version. For example:\n\n```console\n$ uv python pin 3.12\n```\n\nThis will create a `.python-version` file in the current directory with the specified Python version. You can also pin a global version for the user by adding the `--global` option:\n\n```console\n$ uv python pin --global 3.12\n```\n\nThis will create a global `.python-version` file in the user configuration directory. [4][5]",
+          "refused": false,
+          "citations": [
+            4,
+            5
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": [
+            "uv python pin 3.12",
+            "uv python pin --global 3.12"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "create-project",
+      "category": "howto",
+      "question": "How do I create a new project with uv?",
+      "should_refuse": false,
+      "expected_sources": [
+        "guides/projects.md",
+        "concepts/projects/init.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/projects/init.md",
+          "section": "Creating projects > Target directory",
+          "score": 0.7555
+        },
+        {
+          "source": "guides/projects.md",
+          "section": "Working on projects > Creating a new project",
+          "score": 0.8202
+        },
+        {
+          "source": "getting-started/features.md",
+          "section": "Features > Projects",
+          "score": 0.7921
+        },
+        {
+          "source": "concepts/projects/init.md",
+          "section": "Creating projects",
+          "score": 0.8037
+        },
+        {
+          "source": "guides/integration/jupyter.md",
+          "section": "Using uv with Jupyter > Using Jupyter from VS Code",
+          "score": 0.7621
+        },
+        {
+          "source": "guides/integration/docker.md",
+          "section": "Using uv in Docker > Getting started > Installing a project",
+          "score": 0.79
+        }
+      ],
+      "rank": 1,
+      "terms_in_expected_pages": true,
+      "top_score": 0.7555,
+      "runs": [
+        {
+          "answer": "To create a new project with uv, you can use the `uv init` command. For example:\n\n```console\n$ uv init hello-world\n```\n\nThis will create a new project named `hello-world` in the current directory, with the following files and directories:\n\n```text\n├── .git/\n├── .gitignore\n├── .python-version\n├── pyproject.toml\n├── README.md\n└── src\n    └── hello_world\n        └── __init__.py\n```\n\nThe `pyproject.toml` defines a `hello-world` entrypoint referring to a simple \"Hello world\" program in `__init__.py`. [2][4]",
+          "refused": false,
+          "citations": [
+            2,
+            4
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To create a new project with uv, you can use the `uv init` command. For example:\n\n```console\n$ uv init hello-world\n```\n\nThis will create a new project named `hello-world` in the current directory, with the following files and directories:\n\n```text\n├── .git/\n├── .gitignore\n├── .python-version\n├── pyproject.toml\n├── README.md\n└── src\n    └── hello_world\n        └── __init__.py\n```\n\nThe `pyproject.toml` defines a `hello-world` entrypoint referring to a simple \"Hello world\" program in `__init__.py`. [2][4]",
+          "refused": false,
+          "citations": [
+            2,
+            4
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To create a new project with uv, you can use the `uv init` command. For example:\n\n```console\n$ uv init hello-world\n```\n\nThis will create a new project named `hello-world` in the current directory, with the following files and directories:\n\n```text\n├── .git/\n├── .gitignore\n├── .python-version\n├── pyproject.toml\n├── README.md\n└── src\n    └── hello_world\n        └── __init__.py\n```\n\nThe `pyproject.toml` defines a `hello-world` entrypoint, which you can run with `uv run`:\n\n```console\n$ uv run hello-world\nHello from hello-world!\n``` [1][2]",
+          "refused": false,
+          "citations": [
+            1,
+            2
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "add-dependency",
+      "category": "howto",
+      "question": "How do I add a dependency to a project?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/projects/dependencies.md",
+        "guides/projects.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/projects/dependencies.md",
+          "section": "Managing dependencies > Adding dependencies",
+          "score": 0.7895
+        },
+        {
+          "source": "guides/projects.md",
+          "section": "Working on projects > Managing dependencies",
+          "score": 0.7551
+        },
+        {
+          "source": "concepts/projects/dependencies.md",
+          "section": "Managing dependencies > Development dependencies",
+          "score": 0.7432
+        },
+        {
+          "source": "concepts/projects/dependencies.md",
+          "section": "Managing dependencies > Adding dependencies > Importing dependencies from requirements files",
+          "score": 0.7278
+        },
+        {
+          "source": "concepts/projects/dependencies.md",
+          "section": "Managing dependencies > Dependency sources > Workspace member",
+          "score": 0.7333
+        },
+        {
+          "source": "concepts/projects/dependencies.md",
+          "section": "Managing dependencies > Dependency sources > Path",
+          "score": 0.7349
+        }
+      ],
+      "rank": 1,
+      "terms_in_expected_pages": true,
+      "top_score": 0.7895,
+      "runs": [
+        {
+          "answer": "To add a dependency to a project, you can use the `uv add` command followed by the package name. For example:\n\n```console\n$ uv add httpx\n```\n\nThis command will add the dependency to the `dependencies` field in `pyproject.toml` and update the lockfile. You can also specify version constraints or alternative sources when adding the dependency. [1][2]",
+          "refused": false,
+          "citations": [
+            1,
+            2
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To add a dependency to a project, you can use the `uv add` command followed by the package name. For example:\n\n```console\n$ uv add httpx\n```\n\nThis command will add the dependency to the `dependencies` field in `pyproject.toml` and update the lockfile. You can also specify version constraints or alternative sources when adding the dependency. [1][2]",
+          "refused": false,
+          "citations": [
+            1,
+            2
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To add a dependency to a project, you can use the `uv add` command followed by the package name. For example:\n\n```console\n$ uv add httpx\n```\n\nThis command will add the dependency to the `dependencies` field in `pyproject.toml` and update the lockfile. You can also specify version constraints or alternative sources when adding a dependency. [1][2]",
+          "refused": false,
+          "citations": [
+            1,
+            2
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "lockfile",
+      "category": "howto",
+      "question": "What is the uv.lock file?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/projects/layout.md",
+        "guides/projects.md"
+      ],
+      "retrieved": [
+        {
+          "source": "guides/projects.md",
+          "section": "Working on projects > Project structure > `uv.lock`",
+          "score": 0.8451
+        },
+        {
+          "source": "concepts/projects/layout.md",
+          "section": "Project structure and files > The lockfile",
+          "score": 0.8498
+        },
+        {
+          "source": "guides/migration/pip-to-project.md",
+          "section": "Migrating from pip to a uv project > Migrating to a uv project > The uv lockfile",
+          "score": 0.8351
+        },
+        {
+          "source": "concepts/resolution.md",
+          "section": "Resolution > Universal resolution",
+          "score": 0.7842
+        },
+        {
+          "source": "guides/integration/renovate.md",
+          "section": "Renovate > `uv.lock` output",
+          "score": 0.8049
+        },
+        {
+          "source": "concepts/resolution.md",
+          "section": "Resolution > Lockfile versioning",
+          "score": 0.7954
+        }
+      ],
+      "rank": 1,
+      "terms_in_expected_pages": true,
+      "top_score": 0.8451,
+      "runs": [
+        {
+          "answer": "`uv.lock` is a cross-platform lockfile that contains exact information about your project's dependencies. Unlike the `pyproject.toml` which is used to specify the broad requirements of your project, the lockfile contains the exact resolved versions that are installed in the project environment. This file should be checked into version control, allowing for consistent and reproducible installations across machines [1][2]. It is a human-readable TOML file but is managed by uv and should not be edited manually [1][2].",
+          "refused": false,
+          "citations": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "`uv.lock` is a cross-platform lockfile that contains exact information about your project's dependencies. Unlike the `pyproject.toml` which is used to specify the broad requirements of your project, the lockfile contains the exact resolved versions that are installed in the project environment. This file should be checked into version control, allowing for consistent and reproducible installations across machines [1][2]. It is a human-readable TOML file but is managed by uv and should not be edited manually [1][2].",
+          "refused": false,
+          "citations": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "`uv.lock` is a cross-platform lockfile that contains exact information about your project's dependencies. Unlike the `pyproject.toml`, which is used to specify the broad requirements of your project, the lockfile contains the exact resolved versions that are installed in the project environment. This file should be checked into version control, allowing for consistent and reproducible installations across machines [1][2]. It is a human-readable TOML file but is managed by uv and should not be edited manually [1][2].",
+          "refused": false,
+          "citations": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "script-dependencies",
+      "category": "howto",
+      "question": "How do I run a script that declares its own dependencies?",
+      "should_refuse": false,
+      "expected_sources": [
+        "guides/scripts.md"
+      ],
+      "retrieved": [
+        {
+          "source": "guides/scripts.md",
+          "section": "Running scripts > Declaring script dependencies",
+          "score": 0.7763
+        },
+        {
+          "source": "guides/scripts.md",
+          "section": "Running scripts > Running a script with dependencies",
+          "score": 0.7758
+        },
+        {
+          "source": "index.md",
+          "section": "uv > Scripts",
+          "score": 0.727
+        },
+        {
+          "source": "guides/scripts.md",
+          "section": "Running scripts > Declaring script dependencies",
+          "score": 0.7529
+        },
+        {
+          "source": "guides/scripts.md",
+          "section": "Running scripts > Running a script without dependencies",
+          "score": 0.7602
+        },
+        {
+          "source": "pip/dependencies.md",
+          "section": "Declaring dependencies",
+          "score": 0.7208
+        }
+      ],
+      "rank": 1,
+      "terms_in_expected_pages": true,
+      "top_score": 0.7763,
+      "runs": [
+        {
+          "answer": "To run a script that declares its own dependencies, you can use the `uv run` command. uv will search for and use the dependencies declared in the script. If the dependencies are not installed, uv will create an environment with the necessary packages.\n\nHere is an example:\n\n```console\n$ uv run example.py\n```\n\nThis command will run `example.py` and install the dependencies specified in the script if they are not already installed.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To run a script that declares its own dependencies, you can use the `uv run` command. uv will search for and use the dependencies declared in the script. If the dependencies are not installed, uv will create an environment with the necessary packages.\n\nHere is an example:\n\n```console\n$ uv run example.py\n```\n\nThis command will run `example.py` and install the dependencies specified in the script if they are not already installed.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To run a script that declares its own dependencies, you can use the `uv run` command. uv will search for and use the dependencies declared in the script. If the dependencies are not installed, uv will create an environment with the necessary packages.\n\nHere is an example:\n\n```console\n$ uv run example.py\n```\n\nThis command will run the script `example.py` and install the dependencies specified in the script if they are not already installed.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "tool-install",
+      "category": "howto",
+      "question": "How do I install a command-line tool globally?",
+      "should_refuse": false,
+      "expected_sources": [
+        "guides/tools.md",
+        "concepts/tools.md"
+      ],
+      "retrieved": [
+        {
+          "source": "reference/storage.md",
+          "section": "Storage > Types of data > Tools",
+          "score": 0.6651
+        },
+        {
+          "source": "concepts/tools.md",
+          "section": "Tools",
+          "score": 0.6915
+        },
+        {
+          "source": "guides/tools.md",
+          "section": "Using tools > Requesting specific versions",
+          "score": 0.6839
+        },
+        {
+          "source": "concepts/tools.md",
+          "section": "Tools > Installing executables from additional packages",
+          "score": 0.6908
+        },
+        {
+          "source": "concepts/tools.md",
+          "section": "Tools > Including additional dependencies",
+          "score": 0.6674
+        },
+        {
+          "source": "pip/compatibility.md",
+          "section": "Compatibility with `pip` and `pip-tools` > `pip` command-line options and subcommands",
+          "score": 0.6616
+        }
+      ],
+      "rank": 2,
+      "terms_in_expected_pages": true,
+      "top_score": 0.6651,
+      "runs": [
+        {
+          "answer": "The documentation does not contain information on how to install a command-line tool globally. It only describes how to install tools in a default directory [1], but does not specify global installation options.",
+          "refused": true,
+          "citations": [
+            1
+          ],
+          "invalid_citations": [],
+          "terms_ok": false,
+          "correct": false,
+          "has_citation": true,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "The documentation does not contain information on how to install a command-line tool globally. It focuses on installing tools and managing their executables within the tool environment provided by uv.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": false,
+          "correct": false,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "The documentation does not contain information on how to install a command-line tool globally. It focuses on installing tools and managing their executables within the tool environment. For global installation, you might need to use the `--user` option or set the `UV_TOOL_DIR` environment variable to a global location, but these are not explicitly documented here. [1][6]",
+          "refused": true,
+          "citations": [
+            1,
+            6
+          ],
+          "invalid_citations": [],
+          "terms_ok": false,
+          "correct": false,
+          "has_citation": true,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "custom-index",
+      "category": "howto",
+      "question": "How do I configure a custom package index?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/indexes.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/indexes.md",
+          "section": "Package indexes > Authentication > Configuring `exclude-newer` for an index",
+          "score": 0.7453
+        },
+        {
+          "source": "concepts/indexes.md",
+          "section": "Package indexes > Defining an index",
+          "score": 0.7523
+        },
+        {
+          "source": "concepts/indexes.md",
+          "section": "Package indexes",
+          "score": 0.7144
+        },
+        {
+          "source": "guides/scripts.md",
+          "section": "Running scripts > Using alternative package indexes",
+          "score": 0.7457
+        },
+        {
+          "source": "concepts/indexes.md",
+          "section": "Package indexes > Pinning a package to an index",
+          "score": 0.7518
+        },
+        {
+          "source": "concepts/indexes.md",
+          "section": "Package indexes > Searching across multiple indexes",
+          "score": 0.7064
+        }
+      ],
+      "rank": 1,
+      "terms_in_expected_pages": true,
+      "top_score": 0.7453,
+      "runs": [
+        {
+          "answer": "To include an additional index when resolving dependencies, add a `[[tool.uv.index]]` entry to your `pyproject.toml`:\n\n```toml\n[[tool.uv.index]]\nname = \"pytorch\"\nurl = \"https://download.pytorch.org/whl/cpu\"\n```\n\nIndexes are prioritized in the order in which they’re defined, such that the first index listed in the configuration file is the first index consulted when resolving dependencies, with indexes provided via the command line taking precedence over those in the configuration file. [2]",
+          "refused": false,
+          "citations": [
+            2
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To include an additional index when resolving dependencies, add a `[[tool.uv.index]]` entry to your `pyproject.toml`:\n\n```toml\n[[tool.uv.index]]\nname = \"pytorch\"\nurl = \"https://download.pytorch.org/whl/cpu\"\n```\n\nIndexes are prioritized in the order in which they’re defined, such that the first index listed in the configuration file is the first index consulted when resolving dependencies, with indexes provided via the command line taking precedence over those in the configuration file. [2]",
+          "refused": false,
+          "citations": [
+            2
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To include an additional index when resolving dependencies, add a `[[tool.uv.index]]` entry to your `pyproject.toml`:\n\n```toml\n[[tool.uv.index]]\nname = \"pytorch\"\nurl = \"https://download.pytorch.org/whl/cpu\"\n```\n\nIndexes are prioritized in the order in which they’re defined, such that the first index listed in the configuration file is the first index consulted when resolving dependencies, with indexes provided via the command line taking precedence over those in the configuration file [2].",
+          "refused": false,
+          "citations": [
+            2
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "docker-usage",
+      "category": "howto",
+      "question": "How can I use uv in a Docker image?",
+      "should_refuse": false,
+      "expected_sources": [
+        "guides/integration/docker.md"
+      ],
+      "retrieved": [
+        {
+          "source": "guides/integration/docker.md",
+          "section": "Using uv in Docker > Getting started > Installing a project",
+          "score": 0.8268
+        },
+        {
+          "source": "guides/integration/docker.md",
+          "section": "Using uv in Docker > Getting started",
+          "score": 0.8345
+        },
+        {
+          "source": "guides/integration/docker.md",
+          "section": "Using uv in Docker > Optimizations > Using uv temporarily",
+          "score": 0.8359
+        },
+        {
+          "source": "guides/integration/docker.md",
+          "section": "Using uv in Docker > Getting started > Using the environment",
+          "score": 0.8083
+        },
+        {
+          "source": "guides/integration/aws-lambda.md",
+          "section": "Using uv with AWS Lambda > Deploying a Docker image",
+          "score": 0.7881
+        },
+        {
+          "source": "guides/integration/docker.md",
+          "section": "Using uv in Docker > Developing in a container",
+          "score": 0.8395
+        }
+      ],
+      "rank": 1,
+      "terms_in_expected_pages": true,
+      "top_score": 0.8268,
+      "runs": [
+        {
+          "answer": "To use uv in a Docker image, you can follow these steps:\n\n1. Copy the project into the image and install it:\n```dockerfile\n# Copy the project into the image\nCOPY . /app\n\n# Disable development dependencies\nENV UV_NO_DEV=1\n\n# Sync the project into a new environment, asserting the lockfile is up to date\nWORKDIR /app\nRUN uv sync --locked\n```\n\n2. Optionally, add `.venv` to a `.dockerignore` file to prevent it from being included in image builds.\n\n3. To start your application by default:\n```dockerfile\n# Presuming there is a `my_app` command provided by the project\nCMD [\"uv\", \"run\", \"my_app\"]\n```\n\n4. For temporary use, you can mount the uv binary:\n```dockerfile\nRUN --mount=from=ghcr.io/astral-sh/uv,source=/uv,target=/bin/uv \\\n    uv sync\n```\n\n5. Alternatively, you can use `uv run` for commands that require the environment:\n```dockerfile\nRUN uv run some_script.py\n```\n\nFor more details and best practices, you can refer to the `uv-docker-example` project [1][4].",
+          "refused": false,
+          "citations": [
+            1,
+            4
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To use uv in a Docker image, you can follow these steps:\n\n1. Copy the project into the image and install it:\n```dockerfile\n# Copy the project into the image\nCOPY . /app\n\n# Disable development dependencies\nENV UV_NO_DEV=1\n\n# Sync the project into a new environment, asserting the lockfile is up to date\nWORKDIR /app\nRUN uv sync --locked\n```\n\n2. Optionally, add `.venv` to a `.dockerignore` file to prevent it from being included in image builds.\n\n3. To start your application by default, use:\n```dockerfile\n# Presuming there is a `my_app` command provided by the project\nCMD [\"uv\", \"run\", \"my_app\"]\n```\n\n4. For temporary use, you can mount the uv binary:\n```dockerfile\nRUN --mount=from=ghcr.io/astral-sh/uv,source=/uv,target=/bin/uv \\\n    uv sync\n```\n\n5. Alternatively, you can use `uv run` for commands that require the environment:\n```dockerfile\nRUN uv run some_script.py\n```\n\nFor more details and best practices, refer to the `uv-docker-example` project [1][4].",
+          "refused": false,
+          "citations": [
+            1,
+            4
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To use uv in a Docker image, you can follow these steps:\n\n1. Copy the project into the image and install it:\n```dockerfile\n# Copy the project into the image\nCOPY . /app\n\n# Disable development dependencies\nENV UV_NO_DEV=1\n\n# Sync the project into a new environment, asserting the lockfile is up to date\nWORKDIR /app\nRUN uv sync --locked\n```\n\n2. Optionally, add `.venv` to a `.dockerignore` file to prevent it from being included in image builds.\n\n3. To start your application by default:\n```dockerfile\n# Presuming there is a `my_app` command provided by the project\nCMD [\"uv\", \"run\", \"my_app\"]\n```\n\n4. If uv isn't needed in the final image, you can mount the binary in each invocation:\n```dockerfile\nRUN --mount=from=ghcr.io/astral-sh/uv,source=/uv,target=/bin/uv \\\n    uv sync\n```\n\n5. Alternatively, you can activate the project virtual environment by placing its binary directory at the front of the path:\n```dockerfile\nENV PATH=\"/app/.venv/bin:$PATH\"\n```\n\n6. Or use `uv run` for any commands that require the environment:\n```dockerfile\nRUN uv run some_script.py\n```\n\nFor more details and best practices, you can refer to the `uv-docker-example` project. [1][4]",
+          "refused": false,
+          "citations": [
+            1,
+            4
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "cache-directory-variable",
+      "category": "detail",
+      "question": "Which environment variable sets the directory where uv stores its cache?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/cache.md"
+      ],
+      "retrieved": [
+        {
+          "source": "reference/storage.md",
+          "section": "Storage > Types of data > Project virtual environments",
+          "score": 0.7931
+        },
+        {
+          "source": "concepts/projects/layout.md",
+          "section": "Project structure and files > The project environment > Centralized project environments",
+          "score": 0.7813
+        },
+        {
+          "source": "reference/storage.md",
+          "section": "Storage > Types of data > Dependency cache",
+          "score": 0.8515
+        },
+        {
+          "source": "reference/storage.md",
+          "section": "Storage > Types of data > Script virtual environments",
+          "score": 0.7978
+        },
+        {
+          "source": "concepts/cache.md",
+          "section": "Caching > Cache directory",
+          "score": 0.8353
+        },
+        {
+          "source": "concepts/tools.md",
+          "section": "Tools > Tool environments",
+          "score": 0.7821
+        }
+      ],
+      "rank": 5,
+      "terms_in_expected_pages": true,
+      "top_score": 0.7931,
+      "runs": [
+        {
+          "answer": "UV_CACHE_DIR [3][5]",
+          "refused": false,
+          "citations": [
+            3,
+            5
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "UV_CACHE_DIR [3][5]",
+          "refused": false,
+          "citations": [
+            3,
+            5
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "UV_CACHE_DIR [3][5]",
+          "refused": false,
+          "citations": [
+            3,
+            5
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "cache-clean-command",
+      "category": "detail",
+      "question": "What command removes everything from the uv cache?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/cache.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/cache.md",
+          "section": "Caching > Clearing the cache",
+          "score": 0.8193
+        },
+        {
+          "source": "concepts/cache.md",
+          "section": "Caching > Clearing the cache",
+          "score": 0.7735
+        },
+        {
+          "source": "concepts/authentication/cli.md",
+          "section": "The `uv auth` CLI > Logging out of a service",
+          "score": 0.7311
+        },
+        {
+          "source": "getting-started/installation.md",
+          "section": "Installing uv > Uninstallation",
+          "score": 0.7823
+        },
+        {
+          "source": "getting-started/features.md",
+          "section": "Features > Utility",
+          "score": 0.7985
+        },
+        {
+          "source": "concepts/cache.md",
+          "section": "Caching > Caching in continuous integration",
+          "score": 0.7247
+        }
+      ],
+      "rank": 1,
+      "terms_in_expected_pages": true,
+      "top_score": 0.8193,
+      "runs": [
+        {
+          "answer": "`uv cache clean` removes _all_ cache entries from the cache directory, clearing it out entirely. [1]",
+          "refused": false,
+          "citations": [
+            1
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "The command to remove everything from the uv cache is:\n\n```console\n$ uv cache clean\n```\n\nThis command removes all cache entries from the cache directory, leaving the directory and its lock file intact for shared use by other uv processes. [1]",
+          "refused": false,
+          "citations": [
+            1
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "The command to remove everything from the uv cache is:\n\n```console\n$ uv cache clean\n```\n\nThis command removes all cache entries from the cache directory, leaving the directory and its lock file intact for shared use by other uv processes. [1]",
+          "refused": false,
+          "citations": [
+            1
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "sync-locked-flag",
+      "category": "detail",
+      "question": "What does the --locked option do when running uv sync?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/projects/sync.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/projects/sync.md",
+          "section": "Locking and syncing > Automatic lock and sync",
+          "score": 0.83
+        },
+        {
+          "source": "concepts/projects/sync.md",
+          "section": "Locking and syncing > Upgrading locked package versions",
+          "score": 0.7483
+        },
+        {
+          "source": "concepts/projects/sync.md",
+          "section": "Locking and syncing > Syncing the environment > Syncing optional dependencies",
+          "score": 0.7707
+        },
+        {
+          "source": "concepts/projects/sync.md",
+          "section": "Locking and syncing > Syncing the environment > Handling of extraneous packages",
+          "score": 0.7981
+        },
+        {
+          "source": "concepts/projects/sync.md",
+          "section": "Locking and syncing > Partial installations",
+          "score": 0.7731
+        },
+        {
+          "source": "concepts/projects/sync.md",
+          "section": "Locking and syncing > Syncing the environment > Editable installation",
+          "score": 0.7512
+        }
+      ],
+      "rank": 1,
+      "terms_in_expected_pages": true,
+      "top_score": 0.83,
+      "runs": [
+        {
+          "answer": "The --locked option, when used with `uv sync`, will ensure that the project environment is locked and synced before running the command. This means that the lockfile will be checked and updated if necessary [2]. If the lockfile is not up-to-date, uv will raise an error instead of updating the lockfile [1].",
+          "refused": false,
+          "citations": [
+            2,
+            1
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "The --locked option, when used with `uv sync`, will ensure that the project environment is locked and synced before running the command. This means that the lockfile will be checked and updated if necessary [2]. If the lockfile is not up-to-date, uv will raise an error instead of updating the lockfile [1].",
+          "refused": false,
+          "citations": [
+            2,
+            1
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "The --locked option, when used with `uv sync`, will ensure that the project environment is locked and synced before running the command. This means that the lockfile will be checked and updated if necessary [2]. If the lockfile is not up-to-date, uv will raise an error instead of updating the lockfile [1].",
+          "refused": false,
+          "citations": [
+            2,
+            1
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "run-with-extra-package",
+      "category": "detail",
+      "question": "How do I run a command with an additional package without adding it to the project?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/projects/run.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/projects/run.md",
+          "section": "Running commands in projects > Requesting additional dependencies",
+          "score": 0.7354
+        },
+        {
+          "source": "concepts/projects/run.md",
+          "section": "Running commands in projects > Legacy scripts on Windows",
+          "score": 0.7063
+        },
+        {
+          "source": "concepts/projects/run.md",
+          "section": "Running commands in projects",
+          "score": 0.7024
+        },
+        {
+          "source": "concepts/projects/config.md",
+          "section": "Configuring projects > Project packaging",
+          "score": 0.699
+        },
+        {
+          "source": "concepts/tools.md",
+          "section": "Tools > Including additional dependencies",
+          "score": 0.7365
+        },
+        {
+          "source": "concepts/tools.md",
+          "section": "Tools > Installing executables from additional packages",
+          "score": 0.7258
+        }
+      ],
+      "rank": 1,
+      "terms_in_expected_pages": true,
+      "top_score": 0.7354,
+      "runs": [
+        {
+          "answer": "To run a command with an additional package without adding it to the project, you can use the `--with` option. For example:\n\n```console\n$ uv run --with httpx==0.26.0 python -c \"import httpx; print(httpx.__version__)\"\n```\n\nThis command requests a specific version of `httpx` for the current invocation without modifying the project's dependencies. [1]",
+          "refused": false,
+          "citations": [
+            1
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To run a command with an additional package without adding it to the project, you can use the `--with` option. For example:\n\n```console\n$ uv run --with httpx==0.26.0 python -c \"import httpx; print(httpx.__version__)\"\n```\n\nThis command requests a specific version of `httpx` for the current invocation without modifying the project's dependencies. [1]",
+          "refused": false,
+          "citations": [
+            1
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To run a command with an additional package without adding it to the project, you can use the `--with` option. For example:\n\n```console\n$ uv run --with httpx==0.26.0 python -c \"import httpx; print(httpx.__version__)\"\n```\n\nThis command requests a specific version of `httpx` for the invocation, and the requested version will be respected regardless of the project's requirements [1].",
+          "refused": false,
+          "citations": [
+            1
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "script-inline-metadata",
+      "category": "detail",
+      "question": "How do I create a new script file that has inline dependency metadata?",
+      "should_refuse": false,
+      "expected_sources": [
+        "guides/scripts.md"
+      ],
+      "retrieved": [
+        {
+          "source": "index.md",
+          "section": "uv > Scripts",
+          "score": 0.7717
+        },
+        {
+          "source": "guides/scripts.md",
+          "section": "Running scripts > Declaring script dependencies",
+          "score": 0.8225
+        },
+        {
+          "source": "guides/scripts.md",
+          "section": "Running scripts > Creating a Python script",
+          "score": 0.7978
+        },
+        {
+          "source": "guides/integration/marimo.md",
+          "section": "Using uv with marimo > Using marimo with inline script metadata",
+          "score": 0.7435
+        },
+        {
+          "source": "guides/scripts.md",
+          "section": "Running scripts > Running a script with dependencies",
+          "score": 0.7503
+        },
+        {
+          "source": "concepts/projects/run.md",
+          "section": "Running commands in projects > Running scripts",
+          "score": 0.7756
+        }
+      ],
+      "rank": 2,
+      "terms_in_expected_pages": true,
+      "top_score": 0.7717,
+      "runs": [
+        {
+          "answer": "To create a new script file that has inline dependency metadata, you can use the `uv init --script` command. For example:\n\n```console\n$ uv init --script example.py --python 3.12\n```\n\nThis command initializes a script with inline metadata for declaring dependencies [3].",
+          "refused": false,
+          "citations": [
+            3
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To create a new script file that has inline dependency metadata, you can use the `uv init --script` command. For example:\n\n```console\n$ uv init --script example.py --python 3.12\n```\n\nThis command initializes a script with inline metadata for declaring dependencies. [3]",
+          "refused": false,
+          "citations": [
+            3
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To create a new script file that has inline dependency metadata, you can use the `uv init --script` command. For example:\n\n```console\n$ uv init --script example.py --python 3.12\n```\n\nThis command initializes a Python script with inline metadata for declaring dependencies [3].",
+          "refused": false,
+          "citations": [
+            3
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "export-requirements",
+      "category": "detail",
+      "question": "How do I export the lockfile to a requirements.txt file?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/projects/export.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/projects/export.md",
+          "section": "Exporting a lockfile > `requirements.txt` format > Basic usage",
+          "score": 0.8588
+        },
+        {
+          "source": "concepts/projects/export.md",
+          "section": "Exporting a lockfile > `requirements.txt` format",
+          "score": 0.8687
+        },
+        {
+          "source": "concepts/projects/export.md",
+          "section": "Exporting a lockfile > Overview of export formats",
+          "score": 0.8072
+        },
+        {
+          "source": "concepts/projects/sync.md",
+          "section": "Locking and syncing > Exporting the lockfile",
+          "score": 0.7869
+        },
+        {
+          "source": "guides/migration/pip-to-project.md",
+          "section": "Migrating from pip to a uv project > Migrating to a uv project > Importing requirements files",
+          "score": 0.7668
+        },
+        {
+          "source": "guides/migration/pip-to-project.md",
+          "section": "Migrating from pip to a uv project > Understanding pip workflows > Requirements files",
+          "score": 0.7337
+        }
+      ],
+      "rank": 1,
+      "terms_in_expected_pages": true,
+      "top_score": 0.8588,
+      "runs": [
+        {
+          "answer": "To export the lockfile to a `requirements.txt` file, you can use the following command:\n\n```console\n$ uv export --format requirements.txt\n```",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To export the lockfile to a `requirements.txt` file, you can use the following command:\n\n```console\n$ uv export --format requirements.txt\n```",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To export the lockfile to a `requirements.txt` file, you can use the following command:\n\n```console\n$ uv export --format requirements.txt\n```",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "git-dependency",
+      "category": "detail",
+      "question": "How do I add a dependency that comes from a Git repository?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/projects/dependencies.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/projects/dependencies.md",
+          "section": "Managing dependencies > Dependency sources > Git",
+          "score": 0.8038
+        },
+        {
+          "source": "concepts/projects/dependencies.md",
+          "section": "Managing dependencies > Adding dependencies",
+          "score": 0.753
+        },
+        {
+          "source": "concepts/projects/dependencies.md",
+          "section": "Managing dependencies > Dependency sources",
+          "score": 0.719
+        },
+        {
+          "source": "guides/projects.md",
+          "section": "Working on projects > Managing dependencies",
+          "score": 0.7595
+        },
+        {
+          "source": "concepts/projects/dependencies.md",
+          "section": "Managing dependencies > Dependency sources > Git",
+          "score": 0.7442
+        },
+        {
+          "source": "concepts/authentication/git.md",
+          "section": "Git credentials > Persistence of credentials",
+          "score": 0.7059
+        }
+      ],
+      "rank": 1,
+      "terms_in_expected_pages": true,
+      "top_score": 0.8038,
+      "runs": [
+        {
+          "answer": "To add a dependency that comes from a Git repository, you can use the `uv add` command with a Git URL. For example:\n\n```console\n$ uv add git+https://github.com/encode/httpx\n```\n\nYou can also specify a tag, branch, or revision:\n\n```console\n$ uv add git+https://github.com/encode/httpx --tag 0.27.0\n$ uv add git+https://github.com/encode/httpx --branch main\n$ uv add git+https://github.com/encode/httpx --rev 326b9431c761e1ef1e00b9f760d1f654c8db48c6\n```\n\nIf the package is not in the root directory of the repository, you can specify a subdirectory:\n\n```console\n$ uv add git+https://github.com/langchain-ai/langchain#subdirectory=libs/langchain\n```\n\nFor more control, you can also configure the dependency in `pyproject.toml`:\n\n```toml title=\"pyproject.toml\"\n[project]\ndependencies = [\"httpx\"]\n\n[tool.uv.sources]\nhttpx = { git = \"https://github.com/encode/httpx\" }\n```\n\nThis will add the dependency and its source configuration to your project.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To add a dependency that comes from a Git repository, you can use the `uv add` command with a Git URL. For example:\n\n```console\n$ uv add git+https://github.com/encode/httpx\n```\n\nYou can also specify additional options such as a tag, branch, or revision:\n\n```console\n$ uv add git+https://github.com/encode/httpx --tag 0.27.0\n$ uv add git+https://github.com/encode/httpx --branch main\n$ uv add git+https://github.com/encode/httpx --rev 326b9431c761e1ef1e00b9f760d1f654c8db48c6\n```\n\nIf the package is not located in the root of the repository, you can specify a subdirectory:\n\n```console\n$ uv add git+https://github.com/langchain-ai/langchain#subdirectory=libs/langchain\n```\n\nFor more control over Git LFS objects, you can configure the source in `pyproject.toml`:\n\n```toml\n[tool.uv.sources]\nlfs-cowsay = { git = \"https://github.com/astral-sh/lfs-cowsay\", lfs = true }\n```\n\n[1][5]",
+          "refused": false,
+          "citations": [
+            1,
+            5
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To add a dependency that comes from a Git repository, you can use the `uv add` command with a Git URL. For example:\n\n```console\n$ uv add git+https://github.com/encode/httpx\n```\n\nYou can also specify additional options such as a tag, branch, or revision:\n\n```console\n$ uv add git+https://github.com/encode/httpx --tag 0.27.0\n$ uv add git+https://github.com/encode/httpx --branch main\n$ uv add git+https://github.com/encode/httpx --rev 326b9431c761e1ef1e00b9f760d1f654c8db48c6\n```\n\nIf the package is not in the root directory of the repository, you can specify a subdirectory:\n\n```console\n$ uv add git+https://github.com/langchain-ai/langchain#subdirectory=libs/langchain\n```\n\nFor more control over Git LFS objects, you can configure the source in `pyproject.toml`:\n\n```toml\n[tool.uv.sources]\nlfs-cowsay = { git = \"https://github.com/astral-sh/lfs-cowsay\", lfs = true }\n```\n\n[1][5]",
+          "refused": false,
+          "citations": [
+            1,
+            5
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "dev-dependency",
+      "category": "detail",
+      "question": "How do I add a dependency that is only needed for development?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/projects/dependencies.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/projects/dependencies.md",
+          "section": "Managing dependencies > Development dependencies",
+          "score": 0.7951
+        },
+        {
+          "source": "concepts/projects/dependencies.md",
+          "section": "Managing dependencies > Development dependencies > Dependency groups",
+          "score": 0.7233
+        },
+        {
+          "source": "concepts/projects/dependencies.md",
+          "section": "Managing dependencies > Adding dependencies",
+          "score": 0.7596
+        },
+        {
+          "source": "concepts/projects/dependencies.md",
+          "section": "Managing dependencies > Development dependencies > Group `requires-python`",
+          "score": 0.7497
+        },
+        {
+          "source": "guides/migration/pip-to-project.md",
+          "section": "Migrating from pip to a uv project > Understanding pip workflows > Development dependencies",
+          "score": 0.7202
+        },
+        {
+          "source": "guides/projects.md",
+          "section": "Working on projects > Managing dependencies",
+          "score": 0.7309
+        }
+      ],
+      "rank": 1,
+      "terms_in_expected_pages": true,
+      "top_score": 0.7951,
+      "runs": [
+        {
+          "answer": "To add a development dependency, use the `--dev` flag:\n\n```console\n$ uv add --dev pytest\n```\n\nThis will create a `dev` group in your `pyproject.toml`:\n\n```toml title=\"pyproject.toml\"\n[dependency-groups]\ndev = [\n  \"pytest >=8.1.1,<9\"\n]\n```\n\nThe `dev` group is special-cased, and you can use `--dev`, `--only-dev`, and `--no-dev` flags to manage its dependencies.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To add a development dependency, use the `--dev` flag:\n\n```console\n$ uv add --dev pytest\n```\n\nThis will create a `dev` group in your `pyproject.toml`:\n\n```toml title=\"pyproject.toml\"\n[dependency-groups]\ndev = [\n  \"pytest >=8.1.1,<9\"\n]\n```\n\nThe `dev` group is special-cased, and you can use `--dev`, `--only-dev`, and `--no-dev` flags to manage its dependencies.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To add a development dependency, use the `--dev` flag:\n\n```console\n$ uv add --dev pytest\n```\n\nThis will create a `dev` group in your `pyproject.toml`:\n\n```toml title=\"pyproject.toml\"\n[dependency-groups]\ndev = [\n  \"pytest >=8.1.1,<9\"\n]\n```\n\nThe `dev` group is special-cased, and you can use `--dev`, `--only-dev`, and `--no-dev` flags to manage its dependencies.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "workspace-definition",
+      "category": "detail",
+      "question": "How do I declare a workspace made of several packages?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/projects/workspaces.md"
+      ],
+      "retrieved": [
+        {
+          "source": "reference/internals/metadata.md",
+          "section": "Workspace metadata > Handling multiple versions of a package",
+          "score": 0.7902
+        },
+        {
+          "source": "concepts/projects/workspaces.md",
+          "section": "Using workspaces",
+          "score": 0.7708
+        },
+        {
+          "source": "concepts/projects/dependencies.md",
+          "section": "Managing dependencies > Dependency sources > Workspace member",
+          "score": 0.7824
+        },
+        {
+          "source": "reference/internals/metadata.md",
+          "section": "Workspace metadata > Handling multiple versions of a package",
+          "score": 0.7505
+        },
+        {
+          "source": "concepts/build-backend.md",
+          "section": "The uv build backend > Namespace packages",
+          "score": 0.7351
+        },
+        {
+          "source": "concepts/projects/workspaces.md",
+          "section": "Using workspaces > Getting started",
+          "score": 0.7647
+        }
+      ],
+      "rank": 2,
+      "terms_in_expected_pages": true,
+      "top_score": 0.7902,
+      "runs": [
+        {
+          "answer": "To declare a workspace made of several packages, you need to add a `tool.uv.workspace` table to the `pyproject.toml` file of the root package. In this table, you must specify the `members` key, which lists the directories that should be included as workspace members. You can also use the `exclude` key to specify directories that should be excluded from the workspace. Here is an example:\n\n```toml\n[tool.uv.workspace]\nmembers = [\"packages/*\"]\nexclude = [\"packages/seeds\"]\n```\n\nIn this example, every directory under `packages` is included as a workspace member, except for the `seeds` directory. Both applications and libraries can be workspace members.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To declare a workspace made of several packages, you need to add a `tool.uv.workspace` table to the `pyproject.toml` file of the workspace root. In this table, you specify the `members` key, which is required, and the `exclude` key, which is optional. The `members` key should contain a list of globs that direct the workspace to include specific directories as members. The `exclude` key can contain a list of globs to exclude specific directories.\n\nHere is an example configuration:\n\n```toml title=\"pyproject.toml\"\n[tool.uv.workspace]\nmembers = [\"packages/*\"]\nexclude = [\"packages/seeds\"]\n```\n\nIn this example, every directory under `packages` (except `seeds`) will be included as a workspace member. The workspace root itself is also considered a workspace member.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To declare a workspace made of several packages, you need to add a `tool.uv.workspace` table to the `pyproject.toml` file of the root package. In this table, you must specify the `members` key, which lists the directories that are part of the workspace, and optionally the `exclude` key to specify directories that should be excluded. Here is an example:\n\n```toml\n[tool.uv.workspace]\nmembers = [\"packages/*\"]\nexclude = [\"packages/seeds\"]\n```\n\nThis configuration includes all directories under `packages` as workspace members, excluding the `seeds` directory. Each included directory must contain a `pyproject.toml` file.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "publish-package",
+      "category": "detail",
+      "question": "How do I publish a package to PyPI?",
+      "should_refuse": false,
+      "expected_sources": [
+        "guides/package.md"
+      ],
+      "retrieved": [
+        {
+          "source": "guides/package.md",
+          "section": "Building and publishing a package > Publishing your package",
+          "score": 0.823
+        },
+        {
+          "source": "guides/integration/github.md",
+          "section": "Using uv in GitHub Actions > Publishing to PyPI",
+          "score": 0.7823
+        },
+        {
+          "source": "guides/package.md",
+          "section": "Building and publishing a package > Publishing your package",
+          "score": 0.8061
+        },
+        {
+          "source": "guides/integration/azure.md",
+          "section": "Azure Artifacts > Publishing packages",
+          "score": 0.7318
+        },
+        {
+          "source": "concepts/projects/build.md",
+          "section": "Building distributions > Preventing publish to PyPI",
+          "score": 0.7838
+        },
+        {
+          "source": "guides/integration/google.md",
+          "section": "Google Artifact Registry > Publishing packages",
+          "score": 0.7587
+        }
+      ],
+      "rank": 1,
+      "terms_in_expected_pages": true,
+      "top_score": 0.823,
+      "runs": [
+        {
+          "answer": "To publish a package to PyPI, you can use the `uv publish` command. You need to set a PyPI token with `--token` or `UV_PUBLISH_TOKEN`, or set a username with `--username` or `UV_PUBLISH_USERNAME` and password with `--password` or `UV_PUBLISH_PASSWORD`. For publishing to PyPI from GitHub Actions or another Trusted Publisher, you don't need to set any credentials. Instead, add a trusted publisher to the PyPI project.\n\nHere is an example of how to use `uv publish`:\n\n```console\n$ uv publish\n```\n\nIf you are using a custom index, you can specify it with the `--index` option:\n\n```toml\n[[tool.uv.index]]\nname = \"testpypi\"\nurl = \"https://test.pypi.org/simple/\"\npublish-url = \"https://test.pypi.org/legacy/\"\nexplicit = true\n```\n\nAnd then publish the package with:\n\n```console\n$ uv publish --index testpypi\n```\n\nRemember, PyPI does not support publishing with username and password anymore; you need to generate a token. Using a token is equivalent to setting `--username __token__` and using the token as the password.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": [
+            "uv publish --index testpypi"
+          ]
+        },
+        {
+          "answer": "To publish a package to PyPI, you can use the `uv publish` command. You need to set a PyPI token with `--token` or `UV_PUBLISH_TOKEN`, or set a username with `--username` or `UV_PUBLISH_USERNAME` and password with `--password` or `UV_PUBLISH_PASSWORD`. For publishing to PyPI from GitHub Actions or another Trusted Publisher, you don't need to set any credentials. Instead, add a trusted publisher to the PyPI project.\n\nHere is the command to publish your package:\n\n```console\n$ uv publish\n```\n\nIf you're using a custom index through `[[tool.uv.index]]`, add `publish-url` and use `uv publish --index <name>`:\n\n```toml\n[[tool.uv.index]]\nname = \"testpypi\"\nurl = \"https://test.pypi.org/simple/\"\npublish-url = \"https://test.pypi.org/legacy/\"\nexplicit = true\n```\n\nAnd then publish the package:\n\n```console\n$ uv publish --index testpypi\n```",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": [
+            "uv publish --index testpypi"
+          ]
+        },
+        {
+          "answer": "To publish a package to PyPI, you can use the `uv publish` command. You need to set a PyPI token with `--token` or `UV_PUBLISH_TOKEN`, or set a username with `--username` or `UV_PUBLISH_USERNAME` and password with `--password` or `UV_PUBLISH_PASSWORD`. For publishing to PyPI from GitHub Actions or another Trusted Publisher, you don't need to set any credentials. Instead, add a trusted publisher to the PyPI project.\n\nHere is the command to publish your package:\n\n```console\n$ uv publish\n```\n\nIf you are using a custom index, you can specify it with the `--index` option:\n\n```toml\n[[tool.uv.index]]\nname = \"testpypi\"\nurl = \"https://test.pypi.org/simple/\"\npublish-url = \"https://test.pypi.org/legacy/\"\nexplicit = true\n```\n\nAnd then publish with:\n\n```console\n$ uv publish --index testpypi\n```\n\nRemember, PyPI does not support publishing with username and password anymore; you need to generate a token. Using a token is equivalent to setting `--username __token__` and using the token as the password.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": [
+            "uv publish --index testpypi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pin-python-reformulated",
+      "category": "reformulated",
+      "question": "How do I make my project always use the same Python version?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/python-versions.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/projects/config.md",
+          "section": "Configuring projects > Python version requirement",
+          "score": 0.7418
+        },
+        {
+          "source": "guides/projects.md",
+          "section": "Working on projects > Project structure > `.python-version`",
+          "score": 0.7173
+        },
+        {
+          "source": "concepts/projects/dependencies.md",
+          "section": "Managing dependencies > Development dependencies > Group `requires-python`",
+          "score": 0.7238
+        },
+        {
+          "source": "reference/internals/resolver.md",
+          "section": "Resolver internals > Requires-python",
+          "score": 0.7056
+        },
+        {
+          "source": "concepts/tools.md",
+          "section": "Tools > Python versions",
+          "score": 0.7193
+        },
+        {
+          "source": "concepts/python-versions.md",
+          "section": "Python versions > Project Python versions",
+          "score": 0.7128
+        }
+      ],
+      "rank": 6,
+      "terms_in_expected_pages": false,
+      "top_score": 0.7418,
+      "runs": [
+        {
+          "answer": "To make your project always use the same Python version, you can set the `requires-python` field in the `pyproject.toml` file. For example:\n\n```toml title=\"pyproject.toml\" hl_lines=\"4\"\n[project]\nname = \"example\"\nversion = \"0.1.0\"\nrequires-python = \">=3.12\"\n```\n\nThis ensures that the project uses a specific Python version, and the selected version will be compatible with the `requires-python` range. Additionally, you can use the `--python` option to request a specific version when running project commands. [1][6]",
+          "refused": false,
+          "citations": [
+            1,
+            6
+          ],
+          "invalid_citations": [],
+          "terms_ok": false,
+          "correct": false,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To make your project always use the same Python version, you can set the `requires-python` field in the `pyproject.toml` file. For example:\n\n```toml title=\"pyproject.toml\" hl_lines=\"4\"\n[project]\nname = \"example\"\nversion = \"0.1.0\"\nrequires-python = \">=3.12\"\n```\n\nThis ensures that the project uses a specific Python version, and the version requirement affects the selection of dependency versions [1][6].",
+          "refused": false,
+          "citations": [
+            1,
+            6
+          ],
+          "invalid_citations": [],
+          "terms_ok": false,
+          "correct": false,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To make your project always use the same Python version, you can set the `requires-python` field in the `pyproject.toml` file. For example:\n\n```toml title=\"pyproject.toml\" hl_lines=\"4\"\n[project]\nname = \"example\"\nversion = \"0.1.0\"\nrequires-python = \">=3.12\"\n```\n\nThis ensures that the project uses a specific Python version, and the selected version will be compatible with the `requires-python` range. Additionally, you can use the `--python` option to request a specific version when running project commands. [1][6]",
+          "refused": false,
+          "citations": [
+            1,
+            6
+          ],
+          "invalid_citations": [],
+          "terms_ok": false,
+          "correct": false,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "install-python-reformulated",
+      "category": "reformulated",
+      "question": "I need an older interpreter on my machine, how do I get one through uv?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/python-versions.md",
+        "guides/install-python.md"
+      ],
+      "retrieved": [
+        {
+          "source": "guides/tools.md",
+          "section": "Using tools > Requesting Python versions",
+          "score": 0.7568
+        },
+        {
+          "source": "concepts/python-versions.md",
+          "section": "Python versions > Transparent x86_64 emulation on aarch64",
+          "score": 0.6878
+        },
+        {
+          "source": "concepts/python-versions.md",
+          "section": "Python versions > Free-threaded Python",
+          "score": 0.6723
+        },
+        {
+          "source": "concepts/python-versions.md",
+          "section": "Python versions > Discovery of Python versions",
+          "score": 0.6845
+        },
+        {
+          "source": "concepts/python-versions.md",
+          "section": "Python versions > Python implementation support",
+          "score": 0.6817
+        },
+        {
+          "source": "reference/internals/resolver.md",
+          "section": "Resolver internals > Requires-python",
+          "score": 0.6884
+        }
+      ],
+      "rank": 2,
+      "terms_in_expected_pages": true,
+      "top_score": 0.7568,
+      "runs": [
+        {
+          "answer": "To get an older Python interpreter on your machine using uv, you can use the `--python` option to specify the version you need. For example, to install a specific older version of Python, you can use:\n\n```console\n$ uv tool install --python 3.8.10 ruff\n```\n\nThis command tells uv to use Python 3.8.10 when installing the `ruff` tool. You can replace `3.8.10` with any other version number you require [1].",
+          "refused": false,
+          "citations": [
+            1
+          ],
+          "invalid_citations": [],
+          "terms_ok": false,
+          "correct": false,
+          "has_citation": true,
+          "cites_expected_source": false,
+          "unsupported_snippets": [
+            "uv tool install --python 3.8.10 ruff",
+            "3.8.10"
+          ]
+        },
+        {
+          "answer": "To get an older Python interpreter on your machine using uv, you can use the `--python` option to specify the version you need. For example, to install a specific older version of Python, you can use:\n\n```console\n$ uv tool install --python 3.8.10 ruff\n```\n\nThis command tells uv to use Python 3.8.10 when installing the `ruff` tool. You can replace `3.8.10` with any version you require [1].",
+          "refused": false,
+          "citations": [
+            1
+          ],
+          "invalid_citations": [],
+          "terms_ok": false,
+          "correct": false,
+          "has_citation": true,
+          "cites_expected_source": false,
+          "unsupported_snippets": [
+            "uv tool install --python 3.8.10 ruff",
+            "3.8.10"
+          ]
+        },
+        {
+          "answer": "To get an older Python interpreter on your machine using uv, you can use the `--python` option to specify the version you need. For example, to install a specific older version of Python, you would run:\n\n```console\n$ uv tool install --python 3.8.10 ruff\n```\n\nThis command tells uv to use Python 3.8.10 when installing the `ruff` tool. You can replace `3.8.10` with any version you require [1].",
+          "refused": false,
+          "citations": [
+            1
+          ],
+          "invalid_citations": [],
+          "terms_ok": false,
+          "correct": false,
+          "has_citation": true,
+          "cites_expected_source": false,
+          "unsupported_snippets": [
+            "uv tool install --python 3.8.10 ruff",
+            "3.8.10"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "create-project-reformulated",
+      "category": "reformulated",
+      "question": "What is the quickest way to start a brand new Python application with this tool?",
+      "should_refuse": false,
+      "expected_sources": [
+        "guides/projects.md",
+        "concepts/projects/init.md"
+      ],
+      "retrieved": [
+        {
+          "source": "guides/index.md",
+          "section": "Guides overview",
+          "score": 0.7289
+        },
+        {
+          "source": "guides/tools.md",
+          "section": "Using tools > Requesting Python versions",
+          "score": 0.6721
+        },
+        {
+          "source": "getting-started/features.md",
+          "section": "Features > Tools",
+          "score": 0.658
+        },
+        {
+          "source": "guides/projects.md",
+          "section": "Working on projects > Creating a new project",
+          "score": 0.6972
+        },
+        {
+          "source": "concepts/tools.md",
+          "section": "Tools",
+          "score": 0.657
+        },
+        {
+          "source": "index.md",
+          "section": "uv > Highlights",
+          "score": 0.6846
+        }
+      ],
+      "rank": 4,
+      "terms_in_expected_pages": true,
+      "top_score": 0.7289,
+      "runs": [
+        {
+          "answer": "To start a brand new Python application, you can use the `uv init` command as shown:\n\n```console\n$ uv init hello-world\n$ cd hello-world\n```\n\nThis will create a project with essential files and directories, including a `pyproject.toml` that defines an entrypoint to run a \"Hello world\" program [4].",
+          "refused": false,
+          "citations": [
+            4
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To start a brand new Python application, you can use the `uv init` command as shown:\n\n```console\n$ uv init hello-world\n$ cd hello-world\n```\n\nThis will create a basic project structure with essential files and directories [4][6].",
+          "refused": false,
+          "citations": [
+            4,
+            6
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "To start a brand new Python application, you can use the `uv init` command as shown:\n\n```console\n$ uv init hello-world\n$ cd hello-world\n```\n\nThis will create a basic project structure with essential files and directories [4][6].",
+          "refused": false,
+          "citations": [
+            4,
+            6
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "add-dependency-reformulated",
+      "category": "reformulated",
+      "question": "I want my project to use the requests library, what do I run?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/projects/dependencies.md",
+        "guides/projects.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/projects/run.md",
+          "section": "Running commands in projects > Requesting additional dependencies",
+          "score": 0.7125
+        },
+        {
+          "source": "concepts/projects/init.md",
+          "section": "Creating projects > Libraries",
+          "score": 0.7072
+        },
+        {
+          "source": "guides/scripts.md",
+          "section": "Running scripts > Running a script with dependencies",
+          "score": 0.6789
+        },
+        {
+          "source": "guides/scripts.md",
+          "section": "Running scripts > Running a script without dependencies",
+          "score": 0.67
+        },
+        {
+          "source": "concepts/projects/init.md",
+          "section": "Creating projects > Applications",
+          "score": 0.6695
+        },
+        {
+          "source": "guides/scripts.md",
+          "section": "Running scripts > Using alternative package indexes",
+          "score": 0.6779
+        }
+      ],
+      "rank": null,
+      "terms_in_expected_pages": false,
+      "top_score": 0.7125,
+      "runs": [
+        {
+          "answer": "If you want to include the `requests` library in your project, you can use the `uv add` command to add it to your project's dependencies. Here is the command you would run:\n\n```console\n$ uv add requests\n```\n\nThis will add `requests` to your project's dependencies, and the next time you run `uv run`, it will be included in the environment.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": [
+            "uv add requests"
+          ]
+        },
+        {
+          "answer": "If you want to include the `requests` library in your project, you can use the `uv add` command to add it to your project's dependencies. Here is the command you would run:\n\n```console\n$ uv add requests\n```\n\nThis command will add `requests` to your project's dependencies, and the next time you run `uv run`, it will be included in the environment.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": [
+            "uv add requests"
+          ]
+        },
+        {
+          "answer": "If you want to include the `requests` library in your project, you can use the `uv add` command to add it to your project's dependencies. Here is the command you would run:\n\n```console\n$ uv add requests\n```\n\nThis will add `requests` to your project's dependencies, and the next time you run `uv run`, it will be included in the environment.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": [
+            "uv add requests"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lockfile-reformulated",
+      "category": "reformulated",
+      "question": "Which file records the exact versions of everything my project depends on?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/projects/layout.md",
+        "guides/projects.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/resolution.md",
+          "section": "Resolution > Basic examples",
+          "score": 0.704
+        },
+        {
+          "source": "guides/projects.md",
+          "section": "Working on projects > Project structure > `.python-version`",
+          "score": 0.6937
+        },
+        {
+          "source": "guides/migration/pip-to-project.md",
+          "section": "Migrating from pip to a uv project > Understanding pip workflows > Development dependencies",
+          "score": 0.6909
+        },
+        {
+          "source": "guides/package.md",
+          "section": "Building and publishing a package > Updating your version",
+          "score": 0.7098
+        },
+        {
+          "source": "concepts/projects/dependencies.md",
+          "section": "Managing dependencies > Project dependencies",
+          "score": 0.7072
+        },
+        {
+          "source": "reference/internals/metadata.md",
+          "section": "Workspace metadata",
+          "score": 0.6967
+        }
+      ],
+      "rank": 2,
+      "terms_in_expected_pages": false,
+      "top_score": 0.704,
+      "runs": [
+        {
+          "answer": "The `uv.lock` file records the exact versions of everything your project depends on. [6]",
+          "refused": false,
+          "citations": [
+            6
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "The `uv.lock` file records the exact versions of everything your project depends on. [6]",
+          "refused": false,
+          "citations": [
+            6
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "The `uv.lock` file records the exact versions of everything your project depends on. [6]",
+          "refused": false,
+          "citations": [
+            6
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "script-dependencies-reformulated",
+      "category": "reformulated",
+      "question": "How can a standalone Python file bring its own libraries along?",
+      "should_refuse": false,
+      "expected_sources": [
+        "guides/scripts.md"
+      ],
+      "retrieved": [
+        {
+          "source": "guides/scripts.md",
+          "section": "Running scripts",
+          "score": 0.6778
+        },
+        {
+          "source": "concepts/python-versions.md",
+          "section": "Python versions > Managed Python distributions > CPython distributions",
+          "score": 0.7166
+        },
+        {
+          "source": "concepts/projects/init.md",
+          "section": "Creating projects > Libraries",
+          "score": 0.7399
+        },
+        {
+          "source": "getting-started/features.md",
+          "section": "Features > Scripts",
+          "score": 0.6803
+        },
+        {
+          "source": "concepts/projects/build.md",
+          "section": "Building distributions",
+          "score": 0.6882
+        },
+        {
+          "source": "concepts/projects/init.md",
+          "section": "Creating projects > Libraries",
+          "score": 0.7149
+        }
+      ],
+      "rank": 1,
+      "terms_in_expected_pages": false,
+      "top_score": 0.6778,
+      "runs": [
+        {
+          "answer": "To run a standalone Python script with its own libraries, you can use `uv run` as described in the documentation [4].\n\n```console\n$ uv run <script>.py\n```",
+          "refused": false,
+          "citations": [
+            4
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": false,
+          "unsupported_snippets": [
+            "uv run <script>.py"
+          ]
+        },
+        {
+          "answer": "To run a standalone Python script with its own libraries, you can use `uv run` as described in passage [4].\n\n```console\n$ uv run example.py\n```\n\nThis command ensures that the script's dependencies are managed by uv, leveraging the virtual environment created for the script.",
+          "refused": false,
+          "citations": [
+            4
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": false,
+          "unsupported_snippets": [
+            "uv run example.py"
+          ]
+        },
+        {
+          "answer": "To run a standalone Python script with its own libraries, you can use `uv run` as described in [4].\n\n```console\n$ uv run example.py\n```\n\nThis command ensures that the script's dependencies are managed by uv, leveraging the virtual environment it sets up for you.",
+          "refused": false,
+          "citations": [
+            4
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": false,
+          "unsupported_snippets": [
+            "uv run example.py"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tool-install-reformulated",
+      "category": "reformulated",
+      "question": "How do I get a Python command-line program available in my terminal without touching my project?",
+      "should_refuse": false,
+      "expected_sources": [
+        "guides/tools.md",
+        "concepts/tools.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/projects/run.md",
+          "section": "Running commands in projects",
+          "score": 0.6968
+        },
+        {
+          "source": "guides/projects.md",
+          "section": "Working on projects > Creating a new project",
+          "score": 0.6534
+        },
+        {
+          "source": "guides/projects.md",
+          "section": "Working on projects > Running commands",
+          "score": 0.675
+        },
+        {
+          "source": "concepts/projects/init.md",
+          "section": "Creating projects > Creating a project without a build system",
+          "score": 0.6916
+        },
+        {
+          "source": "concepts/projects/run.md",
+          "section": "Running commands in projects > Running scripts",
+          "score": 0.6925
+        },
+        {
+          "source": "concepts/projects/init.md",
+          "section": "Creating projects > Projects with extension modules",
+          "score": 0.6698
+        }
+      ],
+      "rank": null,
+      "terms_in_expected_pages": false,
+      "top_score": 0.6968,
+      "runs": [
+        {
+          "answer": "The documentation does not contain information on how to get a Python command-line program available in your terminal without touching your project. The passages focus on running commands within a project environment and do not provide details on making a Python script globally available in the terminal.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": false,
+          "correct": false,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "The documentation does not contain information on how to get a Python command-line program available in your terminal without touching your project. The passages focus on running commands within a project environment and do not provide details on making a Python program globally available in the terminal.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": false,
+          "correct": false,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "The documentation does not contain information on how to get a Python command-line program available in your terminal without touching your project. The passages focus on running commands within a project context using `uv run`.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": false,
+          "correct": false,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "custom-index-reformulated",
+      "category": "reformulated",
+      "question": "My company runs its own PyPI-like server, how do I make uv use it?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/indexes.md"
+      ],
+      "retrieved": [
+        {
+          "source": "guides/integration/fastapi.md",
+          "section": "Using uv with FastAPI > Migrating an existing FastAPI project",
+          "score": 0.7447
+        },
+        {
+          "source": "guides/integration/fastapi.md",
+          "section": "Using uv with FastAPI > Migrating an existing FastAPI project",
+          "score": 0.7326
+        },
+        {
+          "source": "guides/integration/github.md",
+          "section": "Using uv in GitHub Actions > Publishing to PyPI",
+          "score": 0.7525
+        },
+        {
+          "source": "guides/integration/aws-lambda.md",
+          "section": "Using uv with AWS Lambda > Getting started",
+          "score": 0.725
+        },
+        {
+          "source": "guides/integration/github.md",
+          "section": "Using uv in GitHub Actions > Publishing to PyPI",
+          "score": 0.7582
+        },
+        {
+          "source": "guides/integration/pytorch.md",
+          "section": "Using uv with PyTorch > Configuring accelerators with environment markers",
+          "score": 0.7219
+        }
+      ],
+      "rank": null,
+      "terms_in_expected_pages": false,
+      "top_score": 0.7447,
+      "runs": [
+        {
+          "answer": "The documentation does not contain information on how to configure uv to use a company's own PyPI-like server.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": false,
+          "correct": false,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "The documentation does not contain information on how to configure uv to use a company's own PyPI-like server.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": false,
+          "correct": false,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "The documentation does not contain information on how to configure uv to use a company's own PyPI-like server.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": false,
+          "correct": false,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "install-python-fr",
+      "category": "french",
+      "question": "Comment installer une version précise de Python avec uv ?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/python-versions.md"
+      ],
+      "retrieved": [
+        {
+          "source": "guides/install-python.md",
+          "section": "Installing Python > Getting started",
+          "score": 0.754
+        },
+        {
+          "source": "concepts/python-versions.md",
+          "section": "Python versions > Installing a Python version",
+          "score": 0.7932
+        },
+        {
+          "source": "index.md",
+          "section": "uv > Python versions",
+          "score": 0.7775
+        },
+        {
+          "source": "guides/install-python.md",
+          "section": "Installing Python > Automatic Python downloads",
+          "score": 0.767
+        },
+        {
+          "source": "concepts/python-versions.md",
+          "section": "Python versions > Requesting a version",
+          "score": 0.7458
+        },
+        {
+          "source": "guides/install-python.md",
+          "section": "Installing Python",
+          "score": 0.7465
+        }
+      ],
+      "rank": 2,
+      "terms_in_expected_pages": true,
+      "top_score": 0.754,
+      "runs": [
+        {
+          "answer": "Pour installer une version précise de Python avec uv, utilisez la commande suivante :\n\n```console\n$ uv python install 3.12.3\n```\n\nCela installera la version 3.12.3 de Python [2][3].",
+          "refused": false,
+          "citations": [
+            2,
+            3
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "Pour installer une version précise de Python avec uv, utilisez la commande suivante :\n\n```console\n$ uv python install 3.12.3\n```\n\nCela installera la version 3.12.3 de Python [2][3].",
+          "refused": false,
+          "citations": [
+            2,
+            3
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "Pour installer une version précise de Python avec uv, utilisez la commande suivante :\n\n```console\n$ uv python install 3.12.3\n```\n\nCela installera la version 3.12.3 de Python [2][3].",
+          "refused": false,
+          "citations": [
+            2,
+            3
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "pin-python-fr",
+      "category": "french",
+      "question": "Comment fixer la version de Python d'un projet ?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/python-versions.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/python-versions.md",
+          "section": "Python versions",
+          "score": 0.664
+        },
+        {
+          "source": "concepts/python-versions.md",
+          "section": "Python versions > Requesting a version > Python version files",
+          "score": 0.6737
+        },
+        {
+          "source": "concepts/python-versions.md",
+          "section": "Python versions > Upgrading Python versions > Minor version directories",
+          "score": 0.6681
+        },
+        {
+          "source": "concepts/python-versions.md",
+          "section": "Python versions > Installing a Python version",
+          "score": 0.6689
+        },
+        {
+          "source": "concepts/python-versions.md",
+          "section": "Python versions > Upgrading Python versions",
+          "score": 0.6846
+        },
+        {
+          "source": "reference/internals/resolver.md",
+          "section": "Resolver internals > Requires-python",
+          "score": 0.6764
+        }
+      ],
+      "rank": 1,
+      "terms_in_expected_pages": true,
+      "top_score": 0.664,
+      "runs": [
+        {
+          "answer": "Pour fixer la version de Python d'un projet, vous pouvez utiliser un fichier `.python-version` dans le répertoire du projet. Ce fichier peut être créé avec la commande suivante :\n\n```console\n$ uv python pin\n```\n\nCette commande créera un fichier `.python-version` dans le répertoire courant s'il n'existe pas déjà. Si vous voulez créer un fichier global, vous pouvez utiliser la commande avec l'option `--global` :\n\n```console\n$ uv python pin --global\n```\n\nSi vous voulez désactiver la recherche de ce fichier, vous pouvez utiliser l'option `--no-config` :\n\n```console\n$ uv python install 3.12.3 --no-config\n```\n\nCes fichiers sont utilisés par `uv` pour déterminer la version de Python à installer pour un projet spécifique [2][3].",
+          "refused": false,
+          "citations": [
+            2,
+            3
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": [
+            "uv python install 3.12.3 --no-config"
+          ]
+        },
+        {
+          "answer": "Pour fixer la version de Python d'un projet, vous pouvez utiliser un fichier `.python-version` dans le répertoire du projet. Ce fichier peut être créé avec la commande suivante :\n\n```console\n$ uv python pin\n```\n\nCette commande créera un fichier `.python-version` dans le répertoire courant s'il n'existe pas déjà. Si vous voulez créer un fichier global, vous pouvez utiliser la commande suivante :\n\n```console\n$ uv python pin --global\n```\n\nSi vous voulez désactiver la recherche de ce fichier, vous pouvez utiliser l'option `--no-config` :\n\n```console\n$ uv python pin --no-config\n```\n\nCes fichiers sont utilisés par `uv` pour déterminer la version de Python à utiliser pour un projet spécifique [2].",
+          "refused": false,
+          "citations": [
+            2
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": [
+            "uv python pin --no-config"
+          ]
+        },
+        {
+          "answer": "Pour fixer la version de Python d'un projet, vous pouvez utiliser un fichier `.python-version` dans le répertoire du projet. Ce fichier peut être créé avec la commande suivante :\n\n```console\n$ uv python pin\n```\n\nCette commande créera un fichier `.python-version` dans le répertoire courant s'il n'existe pas déjà. Si vous voulez créer un fichier global, vous pouvez utiliser la commande suivante :\n\n```console\n$ uv python pin --global\n```\n\n[2][3]",
+          "refused": false,
+          "citations": [
+            2,
+            3
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "create-project-fr",
+      "category": "french",
+      "question": "Comment créer un nouveau projet avec uv ?",
+      "should_refuse": false,
+      "expected_sources": [
+        "guides/projects.md",
+        "concepts/projects/init.md"
+      ],
+      "retrieved": [
+        {
+          "source": "index.md",
+          "section": "uv > The pip interface",
+          "score": 0.613
+        },
+        {
+          "source": "reference/policies/platforms.md",
+          "section": "Platform support",
+          "score": 0.6296
+        },
+        {
+          "source": "index.md",
+          "section": "uv",
+          "score": 0.652
+        },
+        {
+          "source": "guides/integration/docker.md",
+          "section": "Using uv in Docker > Getting started > Available images",
+          "score": 0.6397
+        },
+        {
+          "source": "index.md",
+          "section": "uv > Projects",
+          "score": 0.6356
+        },
+        {
+          "source": "guides/integration/docker.md",
+          "section": "Using uv in Docker > Getting started > Available images",
+          "score": 0.6292
+        }
+      ],
+      "rank": null,
+      "terms_in_expected_pages": false,
+      "top_score": 0.613,
+      "runs": [
+        {
+          "answer": "Pour créer un nouveau projet avec uv, utilisez la commande `uv init` suivie du nom du projet. Par exemple :\n\n```console\n$ uv init example\nInitialized project `example` at `/home/user/example`\n```\n\nCela initialisera un nouveau projet nommé `example` dans le répertoire actuel.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "Pour créer un nouveau projet avec uv, utilisez la commande suivante :\n\n```console\n$ uv init example\nInitialized project `example` at `/home/user/example`\n```\n\nCela initialisera un projet nommé `example` dans le répertoire actuel.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "Pour créer un nouveau projet avec uv, utilisez la commande suivante :\n\n```console\n$ uv init example\nInitialized project `example` at `/home/user/example`\n```\n\nCela initialisera un projet nommé `example` dans le répertoire `/home/user/example`.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "add-dependency-fr",
+      "category": "french",
+      "question": "Comment ajouter une dépendance à mon projet ?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/projects/dependencies.md",
+        "guides/projects.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/resolution.md",
+          "section": "Resolution > Conflicting dependencies",
+          "score": 0.6486
+        },
+        {
+          "source": "concepts/projects/dependencies.md",
+          "section": "Managing dependencies > Adding dependencies",
+          "score": 0.63
+        },
+        {
+          "source": "concepts/resolution.md",
+          "section": "Resolution > Conflicting dependencies",
+          "score": 0.6279
+        },
+        {
+          "source": "guides/integration/dependabot.md",
+          "section": "Dependabot > Dependency cooldown",
+          "score": 0.631
+        },
+        {
+          "source": "concepts/resolution.md",
+          "section": "Resolution > Conflicting dependencies",
+          "score": 0.6275
+        },
+        {
+          "source": "reference/internals/resolver.md",
+          "section": "Resolver internals > Metadata consistency",
+          "score": 0.6395
+        }
+      ],
+      "rank": 2,
+      "terms_in_expected_pages": true,
+      "top_score": 0.6486,
+      "runs": [
+        {
+          "answer": "Pour ajouter une dépendance à votre projet, vous pouvez utiliser la commande suivante :\n\n```console\n$ uv add httpx\n```\n\nCela ajoutera une entrée dans le champ `dependencies` de votre fichier `pyproject.toml` :\n\n```toml title=\"pyproject.toml\" hl_lines=\"4\"\n[project]\nname = \"example\"\nversion = \"0.1.0\"\ndependencies = [\"httpx>=0.27.2\"]\n```\n\nVous pouvez également spécifier le type de dépendance en utilisant les flags `--dev`, `--group`, ou `--optional`. Par exemple :\n\n```console\n$ uv add \"httpx>=0.20\"\n```\n\nSi la dépendance provient d'une source autre qu'un registre de paquets, vous pouvez l'ajouter comme suit :\n\n```console\n$ uv add \"httpx @ git+https://github.com/encode/httpx\"\n```\n\nCela ajoutera une entrée dans le champ `sources` de votre fichier `pyproject.toml` :\n\n```toml title=\"pyproject.toml\" hl_lines=\"8-9\"\n[project]\nname = \"example\"\nversion = \"0.1.0\"\ndependencies = [\n    \"httpx\",\n]\n\n[tool.uv.sources]\nhttpx = { git = \"https://github.com/encode/httpx\" }\n```",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "Pour ajouter une dépendance à votre projet, vous pouvez utiliser la commande suivante :\n\n```console\n$ uv add httpx\n```\n\nCela ajoutera une entrée dans le champ `dependencies` de votre fichier `pyproject.toml` :\n\n```toml title=\"pyproject.toml\" hl_lines=\"4\"\n[project]\nname = \"example\"\nversion = \"0.1.0\"\ndependencies = [\"httpx>=0.27.2\"]\n```\n\nVous pouvez également spécifier le type de dépendance en utilisant les flags `--dev`, `--group`, ou `--optional`. Par exemple :\n\n```console\n$ uv add \"httpx>=0.20\"\n```\n\nSi la dépendance provient d'une source autre qu'un registre de paquets, vous pouvez l'ajouter comme suit :\n\n```console\n$ uv add \"httpx @ git+https://github.com/encode/httpx\"\n```\n\nCela ajoutera une entrée dans le champ `sources` de votre fichier `pyproject.toml` :\n\n```toml title=\"pyproject.toml\" hl_lines=\"8-9\"\n[project]\nname = \"example\"\nversion = \"0.1.0\"\ndependencies = [\n    \"httpx\",\n]\n\n[tool.uv.sources]\nhttpx = { git = \"https://github.com/encode/httpx\" }\n```",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "Pour ajouter une dépendance à votre projet, vous pouvez utiliser la commande suivante :\n\n```console\n$ uv add httpx\n```\n\nCela ajoutera une entrée dans le champ `dependencies` de votre fichier `pyproject.toml` :\n\n```toml title=\"pyproject.toml\" hl_lines=\"4\"\n[project]\nname = \"example\"\nversion = \"0.1.0\"\ndependencies = [\"httpx>=0.27.2\"]\n```\n\nVous pouvez également spécifier le type de dépendance en utilisant les flags `--dev`, `--group`, ou `--optional`. Par exemple :\n\n```console\n$ uv add \"httpx>=0.20\"\n```\n\nSi la dépendance provient d'une source autre qu'un registre de paquets, vous pouvez l'ajouter comme suit :\n\n```console\n$ uv add \"httpx @ git+https://github.com/encode/httpx\"\n```\n\nCela ajoutera une entrée dans le champ `sources` de votre fichier `pyproject.toml` :\n\n```toml title=\"pyproject.toml\" hl_lines=\"8-9\"\n[project]\nname = \"example\"\nversion = \"0.1.0\"\ndependencies = [\n    \"httpx\",\n]\n\n[tool.uv.sources]\nhttpx = { git = \"https://github.com/encode/httpx\" }\n```",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "lockfile-fr",
+      "category": "french",
+      "question": "À quoi sert le fichier uv.lock ?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/projects/layout.md",
+        "guides/projects.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/resolution.md",
+          "section": "Resolution > Universal resolution",
+          "score": 0.6807
+        },
+        {
+          "source": "guides/migration/pip-to-project.md",
+          "section": "Migrating from pip to a uv project > Migrating to a uv project > The uv lockfile",
+          "score": 0.7256
+        },
+        {
+          "source": "guides/projects.md",
+          "section": "Working on projects > Project structure > `uv.lock`",
+          "score": 0.7412
+        },
+        {
+          "source": "concepts/projects/layout.md",
+          "section": "Project structure and files > The lockfile",
+          "score": 0.7357
+        },
+        {
+          "source": "guides/scripts.md",
+          "section": "Running scripts > Locking dependencies",
+          "score": 0.7152
+        },
+        {
+          "source": "guides/integration/renovate.md",
+          "section": "Renovate > `uv.lock` output",
+          "score": 0.6949
+        }
+      ],
+      "rank": 3,
+      "terms_in_expected_pages": true,
+      "top_score": 0.6807,
+      "runs": [
+        {
+          "answer": "Le fichier `uv.lock` sert à stocker les versions exactes des dépendances installées dans l'environnement du projet. Cela permet des installations consistentes et réproducible sur différents ordinateurs [4][3]. Il est créé automatiquement et doit être intégré au contrôle de version [2][3][4].",
+          "refused": false,
+          "citations": [
+            4,
+            3,
+            2,
+            3,
+            4
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "Le fichier `uv.lock` sert à锁定文件 `uv.lock` 用于 [1][2][3][4]\n\n- 存储项目依赖的确切信息，确保在不同机器上安装一致和可重复的环境 [3][4]\n- 由 `uv` 管理，不应手动编辑 [2][3][4]\n- 用于跨平台，确保所有可能的 Python 标记（如操作系统、架构和 Python 版本）下的安装包一致 [1][4]\n- 可以锁定特定索引的包版本，这是 `requirements.txt` 文件无法表示的 [2]\n- 在使用项目环境的 `uv` 命令（如 `uv sync` 和 `uv run`）期间自动创建和更新 [4]\n- 用于锁定脚本的依赖项，确保后续操作重用锁定的依赖项 [5]\n- 由 Renovate 使用来决定是否需要更新项目依赖项、可选依赖项和开发依赖项 [6]",
+          "refused": false,
+          "citations": [
+            1,
+            2,
+            3,
+            4,
+            3,
+            4,
+            2,
+            3,
+            4,
+            1,
+            4,
+            2,
+            4,
+            5,
+            6
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "Le fichier `uv.lock` sert à stocker les versions exactes des dépendances installées dans l'environnement du projet. Cela permet des installations consistentes et réproducible sur différents ordinateurs [4][3]. Il est créé automatiquement et doit être contrôlé dans le système de gestion de versions [2][3][4].",
+          "refused": false,
+          "citations": [
+            4,
+            3,
+            2,
+            3,
+            4
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "docker-usage-fr",
+      "category": "french",
+      "question": "Comment conteneuriser une application avec uv ?",
+      "should_refuse": false,
+      "expected_sources": [
+        "guides/integration/docker.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/projects/init.md",
+          "section": "Creating projects > Applications",
+          "score": 0.6569
+        },
+        {
+          "source": "guides/integration/docker.md",
+          "section": "Using uv in Docker > Optimizations > Non-editable installs",
+          "score": 0.6507
+        },
+        {
+          "source": "concepts/indexes.md",
+          "section": "Package indexes > Authentication > Ignoring error codes",
+          "score": 0.6446
+        },
+        {
+          "source": "index.md",
+          "section": "uv",
+          "score": 0.6721
+        },
+        {
+          "source": "guides/integration/aws-lambda.md",
+          "section": "Using uv with AWS Lambda > Deploying a zip archive",
+          "score": 0.6525
+        },
+        {
+          "source": "getting-started/installation.md",
+          "section": "Installing uv > Installation methods > Standalone installer",
+          "score": 0.6524
+        }
+      ],
+      "rank": 2,
+      "terms_in_expected_pages": true,
+      "top_score": 0.6569,
+      "runs": [
+        {
+          "answer": "Pour conteneuriser une application avec uv, vous pouvez utiliser Docker. Voici un exemple de Dockerfile qui montre comment faire :\n\n```dockerfile\n# Install uv\nFROM python:3.12-slim AS builder\nCOPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/\n\n# Use the system Python across both stages\nENV UV_PYTHON_DOWNLOADS=0\n\n# Change the working directory to the `app` directory\nWORKDIR /app\n\n# Install dependencies\nRUN --mount=type=cache,target=/root/.cache/uv \\\n    --mount=type=bind,source=uv.lock,target=uv.lock \\\n    uv sync --frozen --no-install-project --no-editable\n\n# Copy the project into the intermediate image\nCOPY . /app\n\n# Sync the project\nRUN --mount=type=cache,target=/root/.cache/uv \\\n    uv sync --locked --no-editable\n\nFROM python:3.12-slim\n\n# Copy the environment, but not the source code\nCOPY --from=builder /app/.venv /app/.venv\n\n# Run the application\nCMD [\"/app/.venv/bin/hello\"]\n```\n\nCe Dockerfile installe uv, sync et installe les dépendances de l'application dans un premier conteneur, puis copie l'environnement virtuel sans le code source dans un deuxième conteneur final.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "Pour conteneuriser une application avec uv, vous pouvez utiliser Docker. Voici un exemple de Dockerfile qui montre comment faire :\n\n```dockerfile\n# Install uv\nFROM python:3.12-slim AS builder\nCOPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/\n\n# Use the system Python across both stages\nENV UV_PYTHON_DOWNLOADS=0\n\n# Change the working directory to the `app` directory\nWORKDIR /app\n\n# Install dependencies\nRUN --mount=type=cache,target=/root/.cache/uv \\\n    --mount=type=bind,source=uv.lock,target=uv.lock \\\n    uv sync --frozen --no-install-project --no-editable\n\n# Copy the project into the intermediate image\nCOPY . /app\n\n# Sync the project\nRUN --mount=type=cache,target=/root/.cache/uv \\\n    uv sync --locked --no-editable\n\nFROM python:3.12-slim\n\n# Copy the environment, but not the source code\nCOPY --from=builder /app/.venv /app/.venv\n\n# Run the application\nCMD [\"/app/.venv/bin/hello\"]\n```\n\nCe Dockerfile installe uv, sync et configure l'application pour une utilisation non-editable, puis copie l'environnement virtuel dans l'image finale.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "Pour conteneuriser une application avec uv, vous pouvez utiliser Docker. Voici un exemple de Dockerfile qui montre comment faire :\n\n```dockerfile\n# Install uv\nFROM python:3.12-slim AS builder\nCOPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/\n\n# Use the system Python across both stages\nENV UV_PYTHON_DOWNLOADS=0\n\n# Change the working directory to the `app` directory\nWORKDIR /app\n\n# Install dependencies\nRUN --mount=type=cache,target=/root/.cache/uv \\\n    --mount=type=bind,source=uv.lock,target=uv.lock \\\n    uv sync --frozen --no-install-project --no-editable\n\n# Copy the project into the intermediate image\nCOPY . /app\n\n# Sync the project\nRUN --mount=type=cache,target=/root/.cache/uv \\\n    uv sync --locked --no-editable\n\nFROM python:3.12-slim\n\n# Copy the environment, but not the source code\nCOPY --from=builder /app/.venv /app/.venv\n\n# Run the application\nCMD [\"/app/.venv/bin/hello\"]\n```\n\nCe Dockerfile montre comment installer uv, synchroniser les dépendances, et copier l'environnement virtuel sans le code source dans un conteneur final.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "script-dependencies-fr",
+      "category": "french",
+      "question": "Comment lancer un script qui embarque ses propres bibliothèques ?",
+      "should_refuse": false,
+      "expected_sources": [
+        "guides/scripts.md"
+      ],
+      "retrieved": [
+        {
+          "source": "guides/scripts.md",
+          "section": "Running scripts > Declaring script dependencies",
+          "score": 0.5954
+        },
+        {
+          "source": "reference/internals/metadata.md",
+          "section": "Workspace metadata",
+          "score": 0.5828
+        },
+        {
+          "source": "guides/scripts.md",
+          "section": "Running scripts",
+          "score": 0.5771
+        },
+        {
+          "source": "reference/internals/metadata.md",
+          "section": "Workspace metadata > Schema",
+          "score": 0.5758
+        },
+        {
+          "source": "guides/scripts.md",
+          "section": "Running scripts > Improving reproducibility",
+          "score": 0.6188
+        },
+        {
+          "source": "reference/troubleshooting/reproducible-examples.md",
+          "section": "Reproducible examples > Strategies for reproducible examples > Script",
+          "score": 0.6276
+        }
+      ],
+      "rank": 1,
+      "terms_in_expected_pages": true,
+      "top_score": 0.5954,
+      "runs": [
+        {
+          "answer": "Pour lancer un script qui embarque ses propres bibliothèques avec uv, vous pouvez utiliser la commande suivante :\n\n```console\n$ uv run example.py\n```\n\nuv gérera automatiquement l'environnement nécessaire pour exécuter le script, y compris ses dépendances. Si vous avez déclaré les dépendances du script à l'aide de `uv add --script`, uv créera un environnement virtuel avec ces dépendances installées.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "Pour lancer un script qui embarque ses propres bibliothèques avec uv, vous pouvez utiliser la commande suivante :\n\n```console\n$ uv run example.py\n```\n\nuv gérera automatiquement l'environnement nécessaire pour exécuter le script, y compris ses dépendances. Si vous avez déclaré les dépendances dans le script lui-même en utilisant l'option `--script` comme indiqué dans les passages, uv créera un environnement virtuel avec ces dépendances avant d'exécuter le script.",
+          "refused": false,
+          "citations": [],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": false,
+          "cites_expected_source": false,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "Pour lancer un script qui embarque ses propres bibliothèques, vous pouvez utiliser la commande `uv run` comme suit :\n\n```console\n$ uv run example.py\n```\n\nCette commande créera un environnement virtuel avec les dépendances nécessaires pour exécuter le script `example.py` [1][3].",
+          "refused": false,
+          "citations": [
+            1,
+            3
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "cache-clean-fr",
+      "category": "french",
+      "question": "Comment vider le cache de uv ?",
+      "should_refuse": false,
+      "expected_sources": [
+        "concepts/cache.md"
+      ],
+      "retrieved": [
+        {
+          "source": "concepts/cache.md",
+          "section": "Caching > Cache safety",
+          "score": 0.6992
+        },
+        {
+          "source": "concepts/cache.md",
+          "section": "Caching > Cache versioning",
+          "score": 0.7039
+        },
+        {
+          "source": "concepts/cache.md",
+          "section": "Caching > Cache directory",
+          "score": 0.7103
+        },
+        {
+          "source": "concepts/projects/layout.md",
+          "section": "Project structure and files > The project environment > Centralized project environments",
+          "score": 0.6785
+        },
+        {
+          "source": "concepts/cache.md",
+          "section": "Caching > Clearing the cache",
+          "score": 0.7188
+        },
+        {
+          "source": "getting-started/features.md",
+          "section": "Features > Utility",
+          "score": 0.7085
+        }
+      ],
+      "rank": 1,
+      "terms_in_expected_pages": true,
+      "top_score": 0.6992,
+      "runs": [
+        {
+          "answer": "Pour vider le cache de uv, vous pouvez utiliser la commande suivante :\n\n```console\n$ uv cache clean\n```\n\nCette commande supprime tous les entrées du cache, laissant les dossiers et le fichier de verrou en place pour permettre la sécurité des processus concurrents [5][1].",
+          "refused": false,
+          "citations": [
+            5,
+            1
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "Pour vider le cache de uv, vous pouvez utiliser la commande suivante :\n\n```console\n$ uv cache clean\n```\n\nCette commande supprime tous les entrées du cache, laissant les dossiers et le fichier de verrou en place pour permettre la sécurité des processus concurrents [5][1].",
+          "refused": false,
+          "citations": [
+            5,
+            1
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        },
+        {
+          "answer": "Pour vider le cache de uv, vous pouvez utiliser la commande suivante :\n\n```console\n$ uv cache clean\n```\n\nCette commande supprime tous les entrées du cache, laissant les dossiers et le fichier de verrou en place pour permettre la sécurité de l'accès concurrentiel [1][5].",
+          "refused": false,
+          "citations": [
+            1,
+            5
+          ],
+          "invalid_citations": [],
+          "terms_ok": true,
+          "correct": true,
+          "has_citation": true,
+          "cites_expected_source": true,
+          "unsupported_snippets": []
+        }
+      ]
+    },
+    {
+      "id": "kubernetes-autoscaling",
+      "category": "adjacent",
+      "question": "How do I configure Kubernetes autoscaling for my application?",
+      "should_refuse": true,
+      "expected_sources": [],
+      "retrieved": [
+        {
+          "source": "concepts/projects/config.md",
+          "section": "Configuring projects > Build isolation > Disabling build isolation",
+          "score": 0.631
+        },
+        {
+          "source": "concepts/projects/config.md",
+          "section": "Configuring projects > Limited resolution environments",
+          "score": 0.628
+        },
+        {
+          "source": "concepts/configuration-files.md",
+          "section": "Configuration files > Configuring the pip interface",
+          "score": 0.6196
+        },
+        {
+          "source": "guides/integration/github.md",
+          "section": "Using uv in GitHub Actions > Caching",
+          "score": 0.6222
+        },
+        {
+          "source": "concepts/resolution.md",
+          "section": "Resolution > Limited resolution environments",
+          "score": 0.619
+        },
+        {
+          "source": "concepts/cache.md",
+          "section": "Caching > Dynamic metadata",
+          "score": 0.624
+        }
+      ],
+      "rank": null,
+      "terms_in_expected_pages": null,
+      "top_score": 0.631,
+      "runs": [
+        {
+          "answer": "The provided passages do not contain information on how to configure Kubernetes autoscaling for an application. The passages focus on uv, the Python package manager, and do not address Kubernetes or autoscaling configurations.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        },
+        {
+          "answer": "The provided passages do not contain information on how to configure Kubernetes autoscaling for an application. The passages focus on uv, the Python package manager, and do not address Kubernetes or autoscaling configurations.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        },
+        {
+          "answer": "The provided passages do not contain information on how to configure Kubernetes autoscaling for an application. The passages focus on uv, the Python package manager, and do not discuss Kubernetes or autoscaling.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        }
+      ]
+    },
+    {
+      "id": "jenkins-pipeline",
+      "category": "adjacent",
+      "question": "How do I use uv in a Jenkins pipeline?",
+      "should_refuse": true,
+      "expected_sources": [],
+      "retrieved": [
+        {
+          "source": "guides/integration/gitlab.md",
+          "section": "Using uv in GitLab CI/CD > Using `uv pip`",
+          "score": 0.7465
+        },
+        {
+          "source": "guides/integration/github.md",
+          "section": "Using uv in GitHub Actions > Using `uv pip`",
+          "score": 0.75
+        },
+        {
+          "source": "guides/integration/docker.md",
+          "section": "Using uv in Docker > Using the pip interface > Installing a project",
+          "score": 0.7285
+        },
+        {
+          "source": "guides/integration/docker.md",
+          "section": "Using uv in Docker > Using the pip interface > Installing requirements",
+          "score": 0.7558
+        },
+        {
+          "source": "guides/integration/docker.md",
+          "section": "Using uv in Docker > Verifying image provenance",
+          "score": 0.7418
+        },
+        {
+          "source": "guides/integration/docker.md",
+          "section": "Using uv in Docker > Getting started > Using installed tools",
+          "score": 0.7337
+        }
+      ],
+      "rank": null,
+      "terms_in_expected_pages": null,
+      "top_score": 0.7465,
+      "runs": [
+        {
+          "answer": "The provided passages do not contain information on using uv in a Jenkins pipeline.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        },
+        {
+          "answer": "The provided passages do not contain information on using uv in a Jenkins pipeline.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        },
+        {
+          "answer": "The provided passages do not contain information on using uv in a Jenkins pipeline.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        }
+      ]
+    },
+    {
+      "id": "conda-forge-publish",
+      "category": "adjacent",
+      "question": "How do I publish a package to conda-forge?",
+      "should_refuse": true,
+      "expected_sources": [],
+      "retrieved": [
+        {
+          "source": "guides/integration/aws.md",
+          "section": "AWS CodeArtifact > Publishing packages",
+          "score": 0.7064
+        },
+        {
+          "source": "guides/integration/google.md",
+          "section": "Google Artifact Registry > Publishing packages",
+          "score": 0.7251
+        },
+        {
+          "source": "guides/integration/azure.md",
+          "section": "Azure Artifacts > Publishing packages",
+          "score": 0.7053
+        },
+        {
+          "source": "guides/package.md",
+          "section": "Building and publishing a package > Publishing your package",
+          "score": 0.7012
+        },
+        {
+          "source": "guides/package.md",
+          "section": "Building and publishing a package > Updating your version",
+          "score": 0.7163
+        },
+        {
+          "source": "guides/package.md",
+          "section": "Building and publishing a package > Publishing your package",
+          "score": 0.6906
+        }
+      ],
+      "rank": null,
+      "terms_in_expected_pages": null,
+      "top_score": 0.7064,
+      "runs": [
+        {
+          "answer": "The provided passages do not contain information on publishing packages to conda-forge.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        },
+        {
+          "answer": "The provided passages do not contain information on publishing to conda-forge.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        },
+        {
+          "answer": "The provided passages do not contain information on publishing packages to conda-forge.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        }
+      ]
+    },
+    {
+      "id": "nvm-node-versions",
+      "category": "adjacent",
+      "question": "How do I manage Node.js versions with uv?",
+      "should_refuse": true,
+      "expected_sources": [],
+      "retrieved": [
+        {
+          "source": "concepts/python-versions.md",
+          "section": "Python versions > Requiring or disabling managed Python versions",
+          "score": 0.7359
+        },
+        {
+          "source": "guides/projects.md",
+          "section": "Working on projects > Viewing your version",
+          "score": 0.7699
+        },
+        {
+          "source": "guides/integration/github.md",
+          "section": "Using uv in GitHub Actions > Multiple Python versions",
+          "score": 0.726
+        },
+        {
+          "source": "guides/package.md",
+          "section": "Building and publishing a package > Updating your version",
+          "score": 0.7516
+        },
+        {
+          "source": "index.md",
+          "section": "uv > Scripts",
+          "score": 0.7455
+        },
+        {
+          "source": "concepts/resolution.md",
+          "section": "Resolution > Multi-version resolution",
+          "score": 0.7261
+        }
+      ],
+      "rank": null,
+      "terms_in_expected_pages": null,
+      "top_score": 0.7359,
+      "runs": [
+        {
+          "answer": "The provided passages do not contain information on managing Node.js versions with uv. The documentation focuses on managing Python versions and does not mention Node.js.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        },
+        {
+          "answer": "The provided passages do not contain information on managing Node.js versions with uv. The documentation focuses on managing Python versions and does not mention Node.js.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        },
+        {
+          "answer": "The provided passages do not contain information on managing Node.js versions with uv. The documentation focuses on managing Python versions and does not mention Node.js.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        }
+      ]
+    },
+    {
+      "id": "pipenv-migration",
+      "category": "adjacent",
+      "question": "How do I migrate my project from Pipenv to uv?",
+      "should_refuse": true,
+      "expected_sources": [],
+      "retrieved": [
+        {
+          "source": "guides/migration/pip-to-project.md",
+          "section": "Migrating from pip to a uv project",
+          "score": 0.7868
+        },
+        {
+          "source": "guides/migration/pip-to-project.md",
+          "section": "Migrating from pip to a uv project > Migrating to a uv project > Importing requirements files",
+          "score": 0.78
+        },
+        {
+          "source": "guides/migration/pip-to-project.md",
+          "section": "Migrating from pip to a uv project > Migrating to a uv project > Project environments",
+          "score": 0.7866
+        },
+        {
+          "source": "guides/migration/pip-to-project.md",
+          "section": "Migrating from pip to a uv project > Migrating to a uv project > Importing requirements files",
+          "score": 0.773
+        },
+        {
+          "source": "guides/migration/pip-to-project.md",
+          "section": "Migrating from pip to a uv project > Understanding pip workflows > Project dependencies",
+          "score": 0.7451
+        },
+        {
+          "source": "guides/migration/pip-to-project.md",
+          "section": "Migrating from pip to a uv project > Migrating to a uv project > Importing requirements files",
+          "score": 0.765
+        }
+      ],
+      "rank": null,
+      "terms_in_expected_pages": null,
+      "top_score": 0.7868,
+      "runs": [
+        {
+          "answer": "The documentation does not contain specific instructions for migrating from Pipenv to uv. However, it provides guidance on migrating from pip to uv, which can be adapted for Pipenv users. Pipenv projects can be treated similarly to pip projects during the migration process. Here are some key steps:\n\n1. Initialize a uv project:\n```console\n$ uv init\n```\n\n2. Import your Pipenv requirements file:\n```console\n$ uv add -r path/to/Pipfile.lock\n```\n\n3. For development dependencies, use:\n```console\n$ uv add --dev -r path/to/Pipfile.lock\n```\n\n4. Use `uv run` to execute commands in the project environment:\n```console\n$ uv run pytest\n```\n\nFor more detailed steps and options, refer to the provided documentation [1][2][3][4][6].",
+          "refused": true,
+          "citations": [
+            1,
+            2,
+            3,
+            4,
+            6
+          ],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": true
+        },
+        {
+          "answer": "The documentation does not contain specific instructions for migrating from Pipenv to uv. However, it provides guidance on migrating from pip to uv, which can be adapted for Pipenv users. Pipenv projects can be treated similarly to pip projects during the migration process. Here are some key steps:\n\n1. Initialize a new uv project:\n   ```console\n   $ uv init\n   ```\n\n2. Import your Pipenv requirements file:\n   ```console\n   $ uv add -r Pipfile\n   ```\n\n3. If you have a `Pipfile.lock`, you can preserve the locked versions by adding it as a constraint:\n   ```console\n   $ uv add -r Pipfile -c Pipfile.lock\n   ```\n\n4. For development dependencies, use the `--dev` flag:\n   ```console\n   $ uv add --dev -r Pipfile.dev -c Pipfile.lock.dev\n   ```\n\n5. Ensure your project environments are managed by uv:\n   ```console\n   $ uv run pytest\n   ```\n\nFor more detailed steps and specific commands, refer to the provided passages.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        },
+        {
+          "answer": "The documentation does not contain specific instructions for migrating from Pipenv to uv. However, it provides guidance on migrating from pip, which is similar to Pipenv in some aspects. You can follow the steps outlined for migrating from pip to uv [1][2][3][4][6], adapting them as necessary for Pipenv files. Specifically, you would:\n\n1. Create a `pyproject.toml` if you haven't already:\n   ```console\n   $ uv init\n   ```\n\n2. Import your Pipenv requirements and constraints:\n   ```console\n   $ uv add -r requirements.txt -c Pipfile.lock\n   ```\n\n3. For platform-specific constraints, use `uv pip compile`:\n   ```console\n   $ uv pip compile requirements.txt -o requirements-win.txt --python-platform windows --no-strip-markers\n   ```\n\n4. Import the compiled requirements:\n   ```console\n   $ uv add -r requirements.in -c requirements-win.txt -c requirements-linux.txt\n   ```\n\n5. Import development dependencies:\n   ```console\n   $ uv add --dev -r requirements-dev.txt -c Pipfile.lock\n   ```\n\nPlease note that the exact commands and file names might differ based on your specific setup.",
+          "refused": true,
+          "citations": [
+            1,
+            2,
+            3,
+            4,
+            6
+          ],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": true
+        }
+      ]
+    },
+    {
+      "id": "capital-of-australia",
+      "category": "out_of_scope",
+      "question": "What is the capital of Australia?",
+      "should_refuse": true,
+      "expected_sources": [],
+      "retrieved": [
+        {
+          "source": "concepts/projects/export.md",
+          "section": "Exporting a lockfile > CycloneDX SBOM format > What is CycloneDX?",
+          "score": 0.4392
+        },
+        {
+          "source": "reference/internals/resolver.md",
+          "section": "Resolver internals > Metadata consistency",
+          "score": 0.4583
+        },
+        {
+          "source": "pip/environments.md",
+          "section": "Using Python environments > Discovery of Python environments",
+          "score": 0.4447
+        },
+        {
+          "source": "concepts/indexes.md",
+          "section": "Package indexes > Authentication > Customizing cache control headers",
+          "score": 0.433
+        },
+        {
+          "source": "guides/integration/renovate.md",
+          "section": "Renovate > Inline script metadata",
+          "score": 0.4374
+        },
+        {
+          "source": "index.md",
+          "section": "uv",
+          "score": 0.4326
+        }
+      ],
+      "rank": null,
+      "terms_in_expected_pages": null,
+      "top_score": 0.4392,
+      "runs": [
+        {
+          "answer": "The documentation provided does not contain information about the capital of Australia.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        },
+        {
+          "answer": "The documentation provided does not contain information about the capital of Australia.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        },
+        {
+          "answer": "The documentation provided does not contain information about the capital of Australia.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        }
+      ]
+    },
+    {
+      "id": "carbonara-recipe",
+      "category": "out_of_scope",
+      "question": "What is the recipe for spaghetti carbonara?",
+      "should_refuse": true,
+      "expected_sources": [],
+      "retrieved": [
+        {
+          "source": "concepts/cache.md",
+          "section": "Caching > Caching in continuous integration",
+          "score": 0.4918
+        },
+        {
+          "source": "concepts/resolution.md",
+          "section": "Resolution > Dependency cooldowns",
+          "score": 0.4945
+        },
+        {
+          "source": "concepts/indexes.md",
+          "section": "Package indexes > Pinning a package to an index",
+          "score": 0.4932
+        },
+        {
+          "source": "concepts/projects/sync.md",
+          "section": "Locking and syncing > Exporting the lockfile",
+          "score": 0.4986
+        },
+        {
+          "source": "guides/integration/pytorch.md",
+          "section": "Using uv with PyTorch > Installing PyTorch",
+          "score": 0.4953
+        },
+        {
+          "source": "reference/policies/versioning.md",
+          "section": "Versioning > Crate versioning",
+          "score": 0.496
+        }
+      ],
+      "rank": null,
+      "terms_in_expected_pages": null,
+      "top_score": 0.4918,
+      "runs": [
+        {
+          "answer": "The documentation provided does not contain information about making spaghetti carbonara.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        },
+        {
+          "answer": "The documentation provided does not contain information about making spaghetti carbonara.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        },
+        {
+          "answer": "The documentation provided does not contain any information about making spaghetti carbonara.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        }
+      ]
+    },
+    {
+      "id": "world-cup-2018",
+      "category": "out_of_scope",
+      "question": "Who won the 2018 football World Cup?",
+      "should_refuse": true,
+      "expected_sources": [],
+      "retrieved": [
+        {
+          "source": "concepts/resolution.md",
+          "section": "Resolution > Pre-release handling",
+          "score": 0.3769
+        },
+        {
+          "source": "concepts/resolution.md",
+          "section": "Resolution > Multi-version resolution",
+          "score": 0.3819
+        },
+        {
+          "source": "guides/integration/renovate.md",
+          "section": "Renovate > Inline script metadata",
+          "score": 0.3725
+        },
+        {
+          "source": "concepts/resolution.md",
+          "section": "Resolution > Reproducible resolutions",
+          "score": 0.3868
+        },
+        {
+          "source": "concepts/projects/export.md",
+          "section": "Exporting a lockfile > Overview of export formats",
+          "score": 0.3825
+        },
+        {
+          "source": "concepts/projects/export.md",
+          "section": "Exporting a lockfile > CycloneDX SBOM format > What is CycloneDX?",
+          "score": 0.3838
+        }
+      ],
+      "rank": null,
+      "terms_in_expected_pages": null,
+      "top_score": 0.3769,
+      "runs": [
+        {
+          "answer": "The documentation provided does not contain information about the 2018 football World Cup winner.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        },
+        {
+          "answer": "The documentation provided does not contain information about the 2018 football World Cup winner.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        },
+        {
+          "answer": "The documentation provided does not contain information about the 2018 football World Cup winner.",
+          "refused": true,
+          "citations": [],
+          "invalid_citations": [],
+          "correct": true,
+          "cited_in_refusal": false
+        }
+      ]
+    }
+  ]
+}
