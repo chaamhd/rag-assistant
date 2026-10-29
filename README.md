@@ -49,6 +49,19 @@ d'architecture sera ajouté à la fin du projet.
 
 Les choix techniques et leurs compromis sont dans [docs/decisions.md](docs/decisions.md).
 
+## Tests
+
+```bash
+pip install pytest
+python -m pytest -q
+```
+
+Les tests tournent sans base de données ni Ollama : la recherche et le modèle de langage
+sont remplacés par de faux composants. Ils couvrent le découpage des passages, le prompt,
+les métriques d'évaluation, la fusion des classements, le reranking, les événements de
+réponse et l'API HTTP (flux SSE, validation de la question, erreur 503 et événement
+d'erreur sans détail technique).
+
 ## Évaluation
 
 Jeu de 43 questions (`eval/dataset.yaml`) dont la vérité terrain est validée
