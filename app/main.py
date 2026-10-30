@@ -6,12 +6,16 @@ import psycopg
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
 
+from app.logging_config import setup_logging
 from app.rag import Event, answer_events
 from app.schemas import AskRequest
 from app.search import search
 
+setup_logging()
+
 logger = logging.getLogger(__name__)
 app = FastAPI(title="RAG Assistant")
+logger.info("API started")
 
 
 @app.get("/health")
