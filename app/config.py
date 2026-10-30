@@ -39,6 +39,8 @@ class Settings(BaseSettings):
     # API
     question_max_chars: int = Field(gt=0)
 
+    # Journalisation
+    log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR"]
 
     @property
     def database_dsn(self) -> str:
