@@ -62,6 +62,30 @@ les métriques d'évaluation, la fusion des classements, le reranking, les évé
 réponse et l'API HTTP (flux SSE, validation de la question, erreur 503 et événement
 d'erreur sans détail technique).
 
+## Journalisation
+
+L'API écrit ses logs sur la sortie standard, **une ligne JSON par message**, ce qui permet de les filtrer et de les analyser avec des outils comme `jq`. Le format est défini dans `app/logging_config.py` (bibliothèque standard uniquement, aucune dépendance en plus).
+
+Le niveau de détail se règle dans `.env` :
+
+```
+LOG_LEVEL=INFO
+```
+
+Valeurs possibles : `DEBUG`, `INFO`, `WARNING`, `ERROR`. Pour lire les logs de l'API dans Docker :
+
+```bash
+docker compose logs api
+```
+
+Exemple de ligne :
+
+```json
+{"time": "2026-10-30T10:30:12.456+00:00", "level": "INFO", "logger": "app.main", "message": "API started"}
+```
+
+Les erreurs ajoutent un champ `exception` avec le détail technique, qui reste dans les logs et n'est jamais renvoyé au client. Les lignes du serveur `uvicorn` (démarrage, requêtes) gardent leur format
+
 ## Évaluation
 
 Jeu de 43 questions (`eval/dataset.yaml`) dont la vérité terrain est validée
