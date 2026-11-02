@@ -1,8 +1,12 @@
 import json
 import logging
+from contextvars import ContextVar
 from datetime import datetime, timezone
 
 from app.config import settings
+
+# Identifiant de la question en cours, ajouté automatiquement à chaque log
+request_id_var = ContextVar("request_id", default=None)
 
 # Attributs standard d'un message de log : tout ce qui s'ajoute vient de `extra=`
 _STANDARD_FIELDS = set(logging.makeLogRecord({}).__dict__) | {"message", "asctime"}
@@ -20,6 +24,9 @@ class JsonFormatter(logging.Formatter):
             "logger": record.name,
             "message": record.getMessage(),
         }
+        request_id = request_id_var.get()
+        if request_id:
+            data["request_id"] = request_id
         data.update(
             {k: v for k, v in record.__dict__.items() if k not in _STANDARD_FIELDS}
         )
