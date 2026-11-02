@@ -84,7 +84,34 @@ Exemple de ligne :
 {"time": "2026-10-30T10:30:12.456+00:00", "level": "INFO", "logger": "app.main", "message": "API started"}
 ```
 
-Les erreurs ajoutent un champ `exception` avec le détail technique, qui reste dans les logs et n'est jamais renvoyé au client. Les lignes du serveur `uvicorn` (démarrage, requêtes) gardent leur format
+Les erreurs ajoutent un champ `exception` avec le détail technique, qui reste dans les logs et n'est jamais renvoyé au client. Les lignes du serveur `uvicorn` (démarrage, requêtes) gardent leur format texte habituel.
+
+### Une ligne par question
+
+Chaque question produit deux lignes de log liées par le même `request_id` : `search done` (recherche et reranking) et `question answered` (bilan). Le `request_id` est aussi renvoyé dans l'en-tête `X-Request-ID`.
+
+| Champ | Signification |
+|---|---|
+| `search_ms` | durée de la recherche, reranking compris |
+| `first_token_ms` | délai entre la fin de la recherche et le premier morceau de réponse |
+| `llm_ms`, `total_ms` | durée de la génération, durée totale de la question |
+| `sources`, `passages` | identifiants des passages envoyés au modèle et leur nombre |
+| `stream_chunks`, `answer_chars` | morceaux reçus (proches du nombre de tokens) et taille de la réponse |
+| `status` | `ok`, `llm_error` ou `interrupted` (le client a coupé) |
+| `config` | mode de recherche, reranking, modèles et `prompt_id` utilisés |
+
+### Latence mesurée
+
+Mesure sur 5 questions (dont une hors sujet, refusée), MacBook Air, modèle local qwen2.5:7b, reranking activé, modèles déjà chargés :
+
+| Étape | Médiane | Maximum |
+|---|---|---|
+| Recherche (embedding et base) | 51 ms | 69 ms |
+| Reranking | 670 ms | 716 ms |
+| Premier morceau de réponse | 109 ms | 132 ms |
+| Question complète | 4 462 ms | 6 952 ms |
+
+Cinq questions donnent un ordre de grandeur, pas une statistique. La première question après un démarrage à froid est bien plus lente : les modèles se chargent. Commande : `docker compose logs api --no-log-prefix | python -m scripts.latency_report`
 
 ## Évaluation
 
@@ -284,8 +311,9 @@ passages (12 % → 18 %) et baissé les citations valides (86 % → 69 %) : non 
 - Pas testés : un autre modèle d'embeddings, la réécriture de la question par le modèle, un
   autre modèle de langage local. Le découpage des passages n'a pas été modifié, les scores ne
   le suggérant pas.
-- Le temps de réponse complet n'est pas mesuré : seule la recherche l'est (environ 1 seconde
-  par question avec le reranking). Le modèle de reranking se télécharge au premier appel.
+- Latence mesurée sur 5 questions (voir « Latence mesurée ») : avec un petit modèle local, 
+  la génération domine le temps total (environ 3,7 s sur 4,5 s en médiane). Le modèle de reranking 
+  se télécharge au premier appel.
 - Deux appels identiques peuvent donner des textes différents, mais le résultat (réussite ou
   échec) ne varie pas : 0 question sur 43 dans la dernière évaluation complète.
 
