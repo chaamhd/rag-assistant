@@ -39,6 +39,10 @@ class Settings(BaseSettings):
     # API
     question_max_chars: int = Field(gt=0)
 
+    # Limitation de débit (par adresse IP)
+    rate_limit_requests: int = Field(gt=0)
+    rate_limit_window_seconds: float = Field(gt=0)
+
     # Journalisation
     log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR"]
 
