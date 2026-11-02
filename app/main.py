@@ -3,15 +3,18 @@ import logging
 import time
 import uuid
 from collections.abc import Iterator
+from contextlib import asynccontextmanager
 
-import psycopg
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import StreamingResponse
 
 from app.config import settings
+from app.embeddings import warm_up as warm_up_embeddings
 from app.logging_config import request_id_var, setup_logging
 from app.prompts import PROMPT_ID
 from app.rag import Event, answer_events
+from app.ratelimit import RateLimiter
+from app.rerank import warm_up as warm_up_rerank
 from app.schemas import AskRequest
 from app.search import search
 
@@ -19,8 +22,9 @@ setup_logging()
 
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="RAG Assistant")
-logger.info("API started")
+rate_limiter = RateLimiter(
+    settings.rate_limit_requests, settings.rate_limit_window_seconds
+)
 
 
 def _ms(since: float) -> int:
@@ -39,6 +43,29 @@ def _config() -> dict:
         "llm_model": settings.llm_model,
         "prompt_id": PROMPT_ID,
     }
+
+
+def warm_up_models() -> None:
+    """Charge les modèles au démarrage plutôt qu'à la première question."""
+    started = time.perf_counter()
+    try:
+        warm_up_embeddings()
+        if settings.rerank_enabled:
+            warm_up_rerank()
+    except Exception:
+        logger.exception("Model warm-up failed; they will load on the first question")
+        return
+    logger.info("Models loaded", extra={"duration_ms": _ms(started)})
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    warm_up_models()
+    logger.info("API started")
+    yield
+
+
+app = FastAPI(title="RAG Assistant", lifespan=lifespan)
 
 
 @app.get("/health")
@@ -99,14 +126,22 @@ def traced(
 
 
 @app.post("/ask")
-def ask(request: AskRequest) -> StreamingResponse:
+def ask(request: AskRequest, http_request: Request) -> StreamingResponse:
     request_id = uuid.uuid4().hex[:12]
     request_id_var.set(request_id)
+    client = http_request.client.host if http_request.client else "unknown"
+    if not rate_limiter.allow(client):
+        logger.warning("Rate limit exceeded", extra={"client": client})
+        raise HTTPException(
+            status_code=429,
+            detail="Too many requests. Please try again later.",
+            headers={"Retry-After": str(int(settings.rate_limit_window_seconds))},
+        )
     started = time.perf_counter()
     try:
         results = search(request.question)
-    except psycopg.Error:
-        logger.exception("Recherche impossible : la base de données ne répond pas")
+    except Exception:
+        logger.exception("Search failed (database, embeddings or reranking)")
         raise HTTPException(
             status_code=503, detail="The search service is unavailable."
         )
