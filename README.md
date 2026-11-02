@@ -43,6 +43,10 @@ curl -N -X POST http://localhost:8000/ask \
   -d '{"question": "How can I pin the Python version of a project?"}'
 ```
 
+### Image Docker
+
+L'image de l'API contient déjà les modèles d'embeddings et de reranking (aucun téléchargement au premier appel) et s'exécute avec un utilisateur non root. Les noms des modèles sont lus dans `.env` à la construction : `docker compose up -d --build`. Le volume `./app` du fichier Compose sert au développement et se retire sur un serveur.
+
 ## Fonctionnement
 
 Question → embedding → recherche des 20 passages les plus proches (pgvector)

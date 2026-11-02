@@ -21,3 +21,4 @@
 | Modèles chargés au démarrage | La première question n'est plus lente, et un téléchargement impossible se voit tout de suite dans les logs | Démarrage plus long ; si le chargement échoue, l'API démarre quand même et réessaie à la première question |
 | Toute erreur de recherche donne un 503 neutre | Un reranker introuvable ou une base en panne ne renvoient plus une erreur 500 brute ni un détail technique | Le client ne sait pas quelle étape a échoué ; la cause est dans les logs |
 | Intégration continue sans base ni modèles | Les tests utilisent de faux composants : ils tournent en moins d'une minute, sans téléchargement ni service externe | La recherche sur une vraie base n'est pas testée automatiquement ; c'est l'évaluation qui couvre cette partie |
+| Modèles inclus dans l'image Docker | Pas de téléchargement au premier appel ni besoin d'Internet au démarrage ; démarrage reproductible | Image plus lourde et construction plus longue |
