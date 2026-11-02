@@ -59,8 +59,9 @@ python -m pytest -q
 Les tests tournent sans base de données ni Ollama : la recherche et le modèle de langage
 sont remplacés par de faux composants. Ils couvrent le découpage des passages, le prompt,
 les métriques d'évaluation, la fusion des classements, le reranking, les événements de
-réponse et l'API HTTP (flux SSE, validation de la question, erreur 503 et événement
-d'erreur sans détail technique).
+réponse, l'API HTTP (flux SSE, validation de la question, erreur 503 et événement
+d'erreur sans détail technique), le format des logs JSON, la limitation de débit
+(réponse 429), les erreurs de recherche inattendues et la validité du jeu de questions.
 
 ## Journalisation
 
@@ -112,6 +113,13 @@ Mesure sur 5 questions (dont une hors sujet, refusée), MacBook Air, modèle loc
 | Question complète | 4 462 ms | 6 952 ms |
 
 Cinq questions donnent un ordre de grandeur, pas une statistique. La première question après un démarrage à froid est bien plus lente : les modèles se chargent. Commande : `docker compose logs api --no-log-prefix | python -m scripts.latency_report`
+
+## Robustesse
+
+- **Limitation de débit** : au plus `RATE_LIMIT_REQUESTS` questions par adresse IP sur `RATE_LIMIT_WINDOW_SECONDS` secondes, sinon réponse 429 avec l'en-tête `Retry-After`. Le compteur est gardé en mémoire : il convient à une seule instance de l'API.
+- **Erreurs neutres** : toute panne pendant la recherche (base, embeddings, reranking) renvoie une erreur 503 sans détail technique ; les détails restent dans les logs, avec le `request_id`.
+- **Modèle de langage indisponible** : le client réessaie `LLM_MAX_RETRIES` fois, puis l'API envoie un événement `error` sans détail.
+- **Démarrage** : les modèles d'embeddings et de reranking sont chargés au démarrage, pas à la première question.
 
 ## Évaluation
 
