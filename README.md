@@ -4,6 +4,9 @@ Assistant de questions-réponses qui répond à partir de la documentation de
 [uv](https://github.com/astral-sh/uv), en citant ses sources. Il fonctionne
 entièrement en local et gratuitement (embeddings et modèle de langage locaux).
 
+![CI](https://github.com/chaamhd/rag-assistant/actions/workflows/ci.yml/badge.svg)
+
+
 > Statut : en cours de développement .
 
 ## Fonctionnalités
@@ -120,6 +123,10 @@ Cinq questions donnent un ordre de grandeur, pas une statistique. La première q
 - **Erreurs neutres** : toute panne pendant la recherche (base, embeddings, reranking) renvoie une erreur 503 sans détail technique ; les détails restent dans les logs, avec le `request_id`.
 - **Modèle de langage indisponible** : le client réessaie `LLM_MAX_RETRIES` fois, puis l'API envoie un événement `error` sans détail.
 - **Démarrage** : les modèles d'embeddings et de reranking sont chargés au démarrage, pas à la première question.
+
+## Intégration continue
+
+À chaque envoi sur GitHub, un workflow (`.github/workflows/ci.yml`) installe les dépendances, vérifie le code avec `ruff` et lance les tests. Il ne télécharge aucun modèle et n'a besoin ni de base de données ni d'Ollama : les tests utilisent de faux composants. La configuration vient de `.env.example`.
 
 ## Évaluation
 
