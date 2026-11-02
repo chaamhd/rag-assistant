@@ -51,8 +51,17 @@ L'image de l'API contient déjà les modèles d'embeddings et de reranking (aucu
 
 Question → embedding → recherche des 20 passages les plus proches (pgvector)
 → reranking (les 6 meilleurs passages sont gardés) → prompt avec passages
-numérotés → modèle de langage (Ollama) → réponse en streaming. Le schéma
-d'architecture sera ajouté à la fin du projet.
+numérotés → modèle de langage (Ollama) → réponse en streaming.
+
+```mermaid
+flowchart LR
+    Q["Question"] --> E["Embedding de la question"]
+    E --> S["Recherche vectorielle : 20 candidats"]
+    S --> R["Reranking par cross-encoder"]
+    R --> P["6 passages dans le prompt"]
+    P --> L["Modèle de langage local (Ollama)"]
+    L --> A["Réponse en streaming avec citations"]
+```
 
 Les choix techniques et leurs compromis sont dans [docs/decisions.md](docs/decisions.md).
 
