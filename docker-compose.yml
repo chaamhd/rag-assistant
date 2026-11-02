@@ -14,7 +14,11 @@ services:
       retries: 10
 
   api:
-    build: .
+    build:
+      context: .
+      args:
+        EMBEDDING_MODEL: ${EMBEDDING_MODEL}
+        RERANK_MODEL: ${RERANK_MODEL}
     env_file: .env
     environment:
       POSTGRES_HOST: db
@@ -26,6 +30,13 @@ services:
         condition: service_healthy
     volumes:
       - ./app:/code/app
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+    restart: unless-stopped
 
 volumes:
   pgdata:
