@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import logging
 import re
+import time
 from dataclasses import dataclass
 
 import psycopg
@@ -28,6 +30,7 @@ LIMIT %(n)s
 """
 
 WORD = re.compile(r"\w+")
+logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
@@ -85,10 +88,28 @@ def retrieve(question: str, pool: int) -> list[SearchResult]:
     return rrf_fuse([vector_hits, text_hits], settings.rrf_k)[:pool]
 
 
+def _ms(since: float) -> int:
+    return round((time.perf_counter() - since) * 1000)
+
+
 def search(question: str, k: int | None = None) -> list[SearchResult]:
     """Retourne les k meilleurs passages (k = config par défaut)."""
     limit = settings.search_top_k if k is None else k
+    started = time.perf_counter()
     if not settings.rerank_enabled:
-        return retrieve(question, pool=limit)
+        results = retrieve(question, pool=limit)
+        logger.info("search done", extra={
+            "retrieve_ms": _ms(started), "rerank_ms": 0, "passages": len(results),
+        })
+        return results
     pool = max(limit, settings.rerank_candidates)
-    return rerank(question, retrieve(question, pool=pool))[:limit]
+    candidates = retrieve(question, pool=pool)
+    reranking_started = time.perf_counter()
+    results = rerank(question, candidates)[:limit]
+    logger.info("search done", extra={
+        "retrieve_ms": round((reranking_started - started) * 1000),
+        "rerank_ms": _ms(reranking_started),
+        "candidates": len(candidates),
+        "passages": len(results),
+    })
+    return results
