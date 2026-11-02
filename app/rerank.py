@@ -26,3 +26,8 @@ def rerank(question: str, candidates: list[SearchResult]) -> list[SearchResult]:
     scores = list(_model().rerank(question, documents))
     order = sorted(range(len(candidates)), key=lambda i: scores[i], reverse=True)
     return [candidates[i] for i in order]
+
+
+def warm_up() -> None:
+    """Charge le modèle de reranking maintenant plutôt qu'à la première question."""
+    _model()
