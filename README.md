@@ -1,5 +1,7 @@
 # Assistant RAG sur la documentation de uv
 
+English: [README.en.md](README.en.md)
+
 Assistant de questions-réponses qui répond à partir de la documentation de
 [uv](https://github.com/astral-sh/uv), en citant ses sources. Il fonctionne
 entièrement en local et gratuitement (embeddings et modèle de langage locaux).
