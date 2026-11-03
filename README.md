@@ -7,7 +7,7 @@ entièrement en local et gratuitement (embeddings et modèle de langage locaux).
 ![CI](https://github.com/chaamhd/rag-assistant/actions/workflows/ci.yml/badge.svg)
 
 
-> Statut : en cours de développement .
+> Statut : projet terminé, utilisable en local. Les limites connues sont décrites plus bas.
 
 ## Fonctionnalités
 
@@ -346,8 +346,7 @@ passages (12 % → 18 %) et baissé les citations valides (86 % → 69 %) : non 
   autre modèle de langage local. Le découpage des passages n'a pas été modifié, les scores ne
   le suggérant pas.
 - Latence mesurée sur 5 questions (voir « Latence mesurée ») : avec un petit modèle local, 
-  la génération domine le temps total (environ 3,7 s sur 4,5 s en médiane). Le modèle de reranking 
-  se télécharge au premier appel.
+  la génération domine le temps total (environ 3,7 s sur 4,5 s en médiane).
 - Deux appels identiques peuvent donner des textes différents, mais le résultat (réussite ou
   échec) ne varie pas : 0 question sur 43 dans la dernière évaluation complète.
 
