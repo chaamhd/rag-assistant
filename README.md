@@ -63,6 +63,12 @@ flowchart LR
     L --> A["Réponse en streaming avec citations"]
 ```
 
+### Exemple
+
+Une question avec réponse, puis une question hors sujet, refusée :
+
+![Exemple de réponse de l'assistant](docs/demo.png)
+
 Les choix techniques et leurs compromis sont dans [docs/decisions.md](docs/decisions.md).
 
 ## Tests
